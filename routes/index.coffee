@@ -1,6 +1,8 @@
-express = require 'express'
-router = express.Router
+{Router} = require 'express'
+router = Router()
 
-router.get '/', (res, res) ->
+router.get '/', (req, res) ->
   res.json
     message: 'Hello, world'
+
+module.exports = router

@@ -7,12 +7,20 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "coffee app.coffee",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "express"  
+    "express"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nauchkrug/backend"
+  },
   "author": "stalinswag1",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "express": "^4.14.0"
+  }
 }
