@@ -1,5 +1,5 @@
 BIN = `npm bin`
-FRONTEND = ../frontend
+FRONTEND = ./frontend
 BACKEND = `pwd`
 
 start:
@@ -7,3 +7,7 @@ start:
 
 frontend:
 	@env BACKEND=$(BACKEND) make -C $(FRONTEND)
+
+submodule:
+	@git submodule init
+	@git submodule update

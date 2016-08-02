@@ -1,5 +1,5 @@
 {Router} = require 'express'
-router = Router()
+router = new Router
 db = require './db'
 
 router.get '/', (req, res) ->

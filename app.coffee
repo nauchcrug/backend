@@ -1,15 +1,17 @@
-express = require 'express'
+Express = require 'express'
+serve = require 'serve-static'
 {resolve} = require 'path'
-app = express()
 routes = require './routes'
 admin = require './routes/admin'
+# {RoutingContext, match} = require 'react-router'
 
-#app.get '*', (req, res) ->
-#  res.sendFile resolve 'public/index.html'
+app = new Express
 
-app.use express.static 'public'
-app.use '/api', routes
-app.use '/admin', admin
+app.use serve 'public' # static files
+#app.get '*', (req, res,) #React router middleware
+
+app.use '/api', routes # API routes
+app.use '/admin', admin # Admin routes
 
 module.exports = app
 

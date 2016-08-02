@@ -1,7 +1,7 @@
-{Router} = require 'express'
-router = Router()
+{Router,} = require 'express'
+serve = require 'serve-static'
+router = new Router
 
-router.get '/', (req, res) ->
-  res.send '<h1>Admin</h1>'
+router.use '/', serve 'node_modules/admin-lte'
 
 module.exports = router
