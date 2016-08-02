@@ -7,7 +7,7 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon --config .nodemonrc -r dotenv/config -i frontend index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,9 +21,17 @@
   "license": "BSD",
   "dependencies": {
     "admin-lte": "^2.3.5",
+    "body-parser": "^1.15.2",
     "coffee-script": "^1.10.0",
     "express": "^4.14.0",
+    "isomorphic-fetch": "^2.2.1",
     "pg": "^6.0.3",
+    "pg-promise": "^5.2.7",
     "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.0"
   }
 }
