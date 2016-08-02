@@ -3,7 +3,7 @@ FRONTEND = ./frontend
 BACKEND = `pwd`
 
 start:
-	@coffee app.coffee
+	@npm start
 
 frontend:
 	@env BACKEND=$(BACKEND) make -C $(FRONTEND)
