@@ -3,7 +3,7 @@ router = new Router
 db = require 'routes/db'
 protect = require 'routes/protect'
 
-#router.use '/db', db
+router.use '/db', db
 #router.use '/protected', protect
 
 router.get '/', (req, res) ->
@@ -12,15 +12,12 @@ router.get '/', (req, res) ->
 
 router.post '/', (req, res) ->
   {id} = req.body
-  {stringify} = JSON
-  console.log stringify id
-  res.send stringify id
+  console.log id
+  res.json id
 
 router.get '/isprod', (req, res) ->
-  {stringify} = JSON
   {NODE_ENV} = process.env
   console.log NODE_ENV
-  production = stringify NODE_ENV
-  res.send {production}
+  res.json production: NODE_ENV
 
 module.exports = router

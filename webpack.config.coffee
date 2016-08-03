@@ -1,5 +1,4 @@
 w = require 'webpack'
-merge = require 'webpack-merge'
 {resolve, join} = require 'path'
 {readdirSync} = require 'fs'
 
@@ -16,9 +15,9 @@ loaders = [{
 plugins = [
   new w.DefinePlugin
     "production": JSON.stringify production
-    "process.env":
-      "NODE_ENV": JSON.stringify process.env.NODE_ENV
+    "process.env.NODE_ENV": JSON.stringify process.env.NODE_ENV or ""
   new w.BannerPlugin 'require("source-map-support").install()'
+  new w.HotModuleReplacementPlugin quiet: on
 ]
 
 config =
@@ -38,24 +37,22 @@ config =
   target: 'node'
   node: fs: 'empty'
   plugins: plugins
+  devtool: 'source-map'
   externals: (ctx, req, cb) ->
     start = req.split('/')[0]
-    if start in nodeModules and req isnt 'webpack/hot/signal.js'
+    if start in nodeModules and req isnt 'webpack/hot/poll'
       cb null, "commonjs #{req}"
     else cb()
 
 if not production
-  config.entry.push 'webpack/hot/signal'
+  config.entry.push 'webpack/hot/poll'
+  config.devtool = 'cheap-module-source-map'
 
-module.exports = merge config, if production
-  devtool: 'source-map'
-  plugins: [
-    new w.optimize.UglifyJsPlugin
-      compress: warnings: off
-      sourceMap: on
-  ]
-else
-  devtool: 'cheap-module-source-map'
-  plugins: [
-    new w.HotModuleReplacementPlugin quiet: on
-  ]
+module.exports = config
+
+#module.exports = merge config, if production
+#  plugins: [
+#    new w.optimize.UglifyJsPlugin
+#      compress: warnings: off
+#       sourceMap: on
+#    ]

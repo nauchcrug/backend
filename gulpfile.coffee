@@ -5,6 +5,9 @@ config = require './webpack.config'
 {join} = require 'path'
 {cwd} = require 'process'
 
+dotenv = require 'dotenv'
+dotenv.config() #import .env file
+
 g.task 'watch', (done) ->
   fired = no
   w config
@@ -24,6 +27,7 @@ g.task 'run', ['watch'], ->
   .on 'restart', -> console.log 'Patched!'
 
 g.task 'build', (done) ->
+  process.env.NODE_ENV = 'production'
   w config
     .run (err, stats) ->
       if err then console.error 'Error', err

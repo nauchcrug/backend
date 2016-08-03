@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Nauchkrug backend",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "engines": {
     "node": "6.0.0"
   },
@@ -41,7 +41,6 @@
     "monkey-hot-loader": "0.0.3",
     "nodemon": "^1.10.0",
     "source-map-support": "^0.4.2",
-    "webpack": "^2.1.0-beta.20",
-    "webpack-merge": "^0.14.1"
+    "webpack": "^2.1.0-beta.20"
   }
 }
