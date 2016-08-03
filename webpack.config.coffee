@@ -16,6 +16,8 @@ loaders = [{
 plugins = [
   new w.DefinePlugin
     "production": JSON.stringify production
+    "process.env":
+      "NODE_ENV": JSON.stringify process.env.NODE_ENV
   new w.BannerPlugin 'require("source-map-support").install()'
 ]
 
