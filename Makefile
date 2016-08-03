@@ -5,8 +5,11 @@ BACKEND = `pwd`
 start:
 	@npm start
 
-frontend:
-	@env BACKEND=$(BACKEND) make -C $(FRONTEND)
+build: clean
+	@npm run build
+
+frontend: submodule
+	@env BACKEND=$(BACKEND) make -C $(FRONTEND) web
 
 deploy:
 	@git push github master
@@ -14,3 +17,9 @@ deploy:
 submodule:
 	@git submodule init
 	@git submodule update
+
+clean:
+	@rm -rf dist/*
+
+env:
+	@heroku config -s > .env
