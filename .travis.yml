@@ -1,0 +1,5 @@
+deploy:
+  provider: heroku
+  app: nauchkrug
+  api_key:
+    secure:
