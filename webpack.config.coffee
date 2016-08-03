@@ -42,7 +42,7 @@ config =
       cb null, "commonjs #{req}"
     else cb()
 
-if production
+if not production
   config.entry.push 'webpack/hot/signal'
 
 module.exports = merge config, if production
