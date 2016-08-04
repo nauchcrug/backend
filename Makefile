@@ -12,7 +12,7 @@ frontend: submodule
 	@env BACKEND=$(BACKEND) make -C $(FRONTEND) web
 
 deploy:
-	@git push github master
+	@npm run deploy
 
 submodule:
 	@git submodule init

@@ -8,3 +8,4 @@ Makefile
 .vscode
 .travis.yml
 .nodemonrc
+stats.json

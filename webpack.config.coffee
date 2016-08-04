@@ -2,7 +2,9 @@ w = require 'webpack'
 {resolve, join} = require 'path'
 {readdirSync} = require 'fs'
 
-production = process.env.NODE_ENV is 'production'
+if not global.production?
+  global.production = process.env.NODE_ENV is 'production'
+  {production} = global
 
 nodeModules = readdirSync 'node_modules'
   .filter (x) -> ['.bin'] not in x
@@ -16,8 +18,10 @@ plugins = [
   new w.DefinePlugin
     "production": JSON.stringify production
     "process.env.NODE_ENV": JSON.stringify process.env.NODE_ENV or ""
-  new w.BannerPlugin 'require("source-map-support").install()'
-  new w.HotModuleReplacementPlugin quiet: on
+  new w.BannerPlugin
+    banner: '' #'require("source-map-support").install()'
+    raw: yes
+    entryOnly: no
 ]
 
 config =
@@ -44,15 +48,13 @@ config =
       cb null, "commonjs #{req}"
     else cb()
 
-if not production
-  config.entry.push 'webpack/hot/poll'
-  config.devtool = 'cheap-module-source-map'
-
-module.exports = config
-
-#module.exports = merge config, if production
-#  plugins: [
-#    new w.optimize.UglifyJsPlugin
-#      compress: warnings: off
-#       sourceMap: on
-#    ]
+module.exports = (production) ->
+  if not production
+    config.entry.push 'webpack/hot/poll'
+    config.devtool = 'cheap-module-source-map'
+    config.plugins.push new w.HotModuleReplacementPlugin quiet: on
+  else config.plugins.push  new w.optimize.UglifyJsPlugin
+    compress: warnings: off
+    sourcemap: on
+    sourceMap: on
+  config

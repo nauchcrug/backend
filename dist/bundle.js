@@ -1,4 +1,4 @@
-/*! require("source-map-support").install() */
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 /******/ 		var chunk = require("./" + "" + chunkId + "." + hotCurrentHash + ".hot-update.js");
@@ -17,11 +17,11 @@
 /******/ 	function hotDiposeChunk(chunkId) {
 /******/ 		delete installedChunks[chunkId];
 /******/ 	}
-/******/
+
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0a38b79bbdfa5a51e32f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "50c1d24aec010cfd7584"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -591,17 +591,17 @@
 /******/ 		hotSetStatus("idle");
 /******/ 		return Promise.resolve(outdatedModules);
 /******/ 	}
-/******/
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -611,27 +611,27 @@
 /******/ 			parents: (hotCurrentParentsTemp = hotCurrentParents, hotCurrentParents = [], hotCurrentParentsTemp),
 /******/ 			children: []
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, hotCreateRequire(moduleId));
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// identity function for calling harmory imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
+
 /******/ 	// define getter function for harmory exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		Object.defineProperty(exports, name, {
@@ -640,7 +640,7 @@
 /******/ 			get: getter
 /******/ 		});
 /******/ 	};
-/******/
+
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -649,18 +649,18 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-/******/
+
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
-/******/
+
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(14)(__webpack_require__.s = 14);
+/******/ 	return hotCreateRequire(16)(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -683,7 +683,7 @@ var PORT, SCALE, app, ref;
 
 ref = process.env, PORT = ref.PORT, SCALE = ref.SCALE;
 
-app = __webpack_require__(3);
+app = __webpack_require__(4);
 
 app.listen(PORT, function() {
   return console.log("Express listening on port " + PORT);
@@ -828,31 +828,71 @@ app.listen(PORT, function() {
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(__resourceQuery) {/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+/*globals __resourceQuery */
+if(true) {
+	var hotPollInterval = +(__resourceQuery.substr(1)) || (10 * 60 * 1000);
+
+	function checkForUpdate(fromUpdate) {
+		if(module.hot.status() === "idle") {
+			module.hot.check(true).then(function(updatedModules) {
+				if(!updatedModules) {
+					if(fromUpdate) console.log("[HMR] Update applied.");
+					return;
+				}
+				__webpack_require__(9)(updatedModules, updatedModules);
+				checkForUpdate(true);
+			}).catch(function(err) {
+				var status = module.hot.status();
+				if(["abort", "fail"].indexOf(status) >= 0) {
+					console.warn("[HMR] Cannot apply update.");
+					console.warn("[HMR] " + err.stack || err.message);
+					console.warn("[HMR] You need to restart the application!");
+				} else {
+					console.warn("[HMR] Update failed: " + err.stack || err.message);
+				}
+			});
+		}
+	}
+	setInterval(checkForUpdate, hotPollInterval);
+} else {
+	throw new Error("[HMR] Hot Module Replacement is disabled.");
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, ""))
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
 var Express, admin, api, app, body, cookie, logger, resolve, routes, serve, session;
 
 Express = __webpack_require__(0);
 
 serve = __webpack_require__(1);
 
-resolve = __webpack_require__(12).resolve;
+resolve = __webpack_require__(14).resolve;
 
 routes = global.routes;
 
-session = __webpack_require__(10);
+session = __webpack_require__(12);
 
-cookie = __webpack_require__(9);
+cookie = __webpack_require__(11);
 
-logger = __webpack_require__(11);
+logger = __webpack_require__(13);
 
-body = __webpack_require__(8);
+body = __webpack_require__(10);
 
-api = __webpack_require__(6);
+api = __webpack_require__(7);
 
-admin = __webpack_require__(4);
+admin = __webpack_require__(5);
 
 app = new Express;
 
-if (false) {
+if (true) {
   app.use(logger('dev'));
 }
 
@@ -1006,7 +1046,7 @@ module.exports = app;
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Router, router, serve;
@@ -1157,7 +1197,7 @@ module.exports = router;
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Router, pg, router;
@@ -1166,7 +1206,7 @@ Router = __webpack_require__(0).Router;
 
 router = new Router;
 
-pg = __webpack_require__(13);
+pg = __webpack_require__(15);
 
 pg.defaults.ssl = true;
 
@@ -1320,7 +1360,7 @@ module.exports = router;
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Router, db, protect, router;
@@ -1329,9 +1369,9 @@ Router = __webpack_require__(0).Router;
 
 router = new Router;
 
-db = __webpack_require__(5);
+db = __webpack_require__(6);
 
-protect = __webpack_require__(7);
+protect = __webpack_require__(8);
 
 router.use('/db', db);
 
@@ -1350,7 +1390,7 @@ router.post('/', function(req, res) {
 
 router.get('/isprod', function(req, res) {
   var NODE_ENV;
-  NODE_ENV = "production";
+  NODE_ENV = "";
   console.log(NODE_ENV);
   return res.json({
     production: NODE_ENV
@@ -1495,7 +1535,7 @@ module.exports = router;
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Router, router;
@@ -1644,46 +1684,83 @@ router.get('/', function(req, res) {
 
 
 /***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-module.exports = require("body-parser");
-
-/***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-module.exports = require("cookie-parser");
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+module.exports = function(updatedModules, renewedModules) {
+	var unacceptedModules = updatedModules.filter(function(moduleId) {
+		return renewedModules && renewedModules.indexOf(moduleId) < 0;
+	});
+
+	if(unacceptedModules.length > 0) {
+		console.warn("[HMR] The following modules couldn't be hot updated: (They would need a full reload!)");
+		unacceptedModules.forEach(function(moduleId) {
+			console.warn("[HMR]  - " + moduleId);
+		});
+	}
+
+	if(!renewedModules || renewedModules.length === 0) {
+		console.log("[HMR] Nothing hot updated.");
+	} else {
+		console.log("[HMR] Updated modules:");
+		renewedModules.forEach(function(moduleId) {
+			console.log("[HMR]  - " + moduleId);
+		});
+		var numberIds = renewedModules.every(function(moduleId) {
+			return typeof moduleId === "number";
+		});
+		if(numberIds)
+			console.log("[HMR] Consider using the NamedModulesPlugin for module names.")
+	}
+};
+
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-module.exports = require("express-session");
+module.exports = require("body-parser");
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-module.exports = require("morgan");
+module.exports = require("cookie-parser");
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("express-session");
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-module.exports = require("pg");
+module.exports = require("morgan");
 
 /***/ },
 /* 14 */
+/***/ function(module, exports) {
+
+module.exports = require("path");
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+module.exports = require("pg");
+
+/***/ },
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(2);
+__webpack_require__(2);
+module.exports = __webpack_require__(3);
 
 
 /***/ }
