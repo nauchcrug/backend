@@ -7,9 +7,9 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "gulp run",
-    "build": "gulp build",
-    "deploy": "gulp deploy",
+    "start": "nodemon --config .nodemon.json -r dotenv/config index.js",
+    "lint": "coffeelint -q .",
+    "deploy": "git push github master",
     "test": "echo \"Error: no test specified\" && exit 1 && gulp test"
   },
   "keywords": [
@@ -32,18 +32,12 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.14.1",
     "morgan": "^1.7.0",
-    "pg": "^6.0.3",
+    "pg-promise": "^5.2.7",
     "serve-static": "^1.11.1"
   },
   "devDependencies": {
-    "coffee-loader": "^0.7.2",
-    "cson-loader": "^0.1.0",
+    "coffeelint": "^1.15.7",
     "dotenv": "^2.0.0",
-    "gulp": "^3.9.1",
-    "monkey-hot-loader": "0.0.3",
-    "nodemon": "^1.10.0",
-    "rimraf": "^2.5.4",
-    "source-map-support": "^0.4.2",
-    "webpack": "^2.1.0-beta.20"
+    "nodemon": "^1.10.0"
   }
 }
