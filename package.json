@@ -7,8 +7,9 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "nodemon -r dotenv/config",
+    "start": "nodemon -e 'js coffee cson json sql' -r dotenv/config",
     "lint": "coffeelint -q .",
+    "migrate": "coffee migrate.coffee",
     "deploy": "git push github master",
     "test": "echo \"Error: no test specified\" && exit 1 && gulp test"
   },

@@ -13,10 +13,6 @@ admin = require routes + 'admin'
 
 app = new Express
 #app.use cookie()
-#app.use session
-#  secret: process.env.AUTH0_CLIENT_SECRET
-#  resave: no
-#  saveUninitialized: no
 app.use logger 'dev' if not production
 app.use serve 'public' # static files
 app.use body.urlencoded extended: false
