@@ -1,0 +1,9 @@
+{
+  "ext": "coffee js json cson",
+  "ignore": [
+    ".git",
+    "node_modules",
+    "test",
+    "public"
+  ]
+}

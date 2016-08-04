@@ -7,7 +7,7 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "nodemon --config .nodemon.json -r dotenv/config index.js",
+    "start": "nodemon -r dotenv/config",
     "lint": "coffeelint -q .",
     "deploy": "git push github master",
     "test": "echo \"Error: no test specified\" && exit 1 && gulp test"
