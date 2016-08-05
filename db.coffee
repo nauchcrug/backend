@@ -1,9 +1,14 @@
-pgp = do require 'pg-promise'
+options =
+  connect: (client, dc, isFresh) ->
+    cp = client.connectionParameters
+    console.log "Connected to database #{cp.database}"
+
+
+pgp = require('pg-promise') options
+{parse} = require 'pg-connection-string'
 url = process.env.DATABASE_URL
-#url.replace /^postgres/, '$&+ssl'
 
 # SSL fix
-{parse} = require 'pg-connection-string'
 config = parse url
 config.ssl = on
 

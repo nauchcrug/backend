@@ -1,5 +1,4 @@
 {Router} = require 'express'
-db = require '../db'
 router = new Router
 sql = 'select table_name from information_schema.tables'
 

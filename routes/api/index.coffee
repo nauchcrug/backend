@@ -1,6 +1,6 @@
 {Router} = require 'express'
 router = new Router
-db = require routes + 'db'
+db = require routes + 'api/db'
 protect = require routes + 'protect'
 
 router.use '/db', db
