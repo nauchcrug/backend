@@ -1,16 +1,8 @@
-const {NODE_ENV, PORT, SCALE} = process.env;
-global.production = (NODE_ENV === 'production');
-
-// Globalize app dirs
-const {join} = require('path');
-const {cwd} = process;
-const dirs = ['middlewares', 'routes', 'models'];
-dirs.forEach(dir => global[dir] = join(__dirname, dir) + '/');
-
 const CoffeeScript = require('coffee-script/register');
-global.db = require('./db.coffee');
-const app = require('./app.coffee');
+const globalize = require('./globalize');
 
+const {PORT, SCALE} = process.env;
+const app = require('./app');
 app.listen(PORT, function() {
   console.log(`Express listening on port ${PORT}`);
 });

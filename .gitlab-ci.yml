@@ -25,3 +25,10 @@ test_db:
   script:
    - npm install
    - npm run test:db
+
+production:
+  type: deploy
+  script:
+    - deploy.sh
+  only:
+    - tags

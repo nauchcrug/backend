@@ -1,14 +1,23 @@
 {Router} = require 'express'
 router = new Router
-sql = "select * from exams where id=$1, name=$2"
+reject = (err) ->
+  throw err if err
 
-router.get '/:name/:id', (req, res) ->
-  {name, id} = req.params
-  result = db.any sql, [id, name]
-  result.then (data) ->
-    console.log data
-    res.send data
-  result.then null, (err) ->
-    throw err if err
+router.get '/', (req, res) ->
+  res.render 'site/subj'
+
+router.get '/:subject', (req, res) ->
+  {subject} = req.params
+  res.render 'site/subject',
+    {subject}
+
+router.get '/:subject/:exam', (req, res) ->
+  {subject, exam} = req.params
+  db.exam.get subject, exam
+    .then (data) ->
+      res.send data
+      #res.render 'site/exam', {subject, exam}
+    .then null, (err) ->
+      throw err if err
 
 module.exports = router

@@ -7,7 +7,7 @@
     "node": "6.0.0"
   },
   "scripts": {
-    "start": "nodemon -e 'js coffee cson json sql' -r dotenv/config",
+    "start": "nodemon -e 'js coffee cson json sql'",
     "lint": "coffeelint -q .",
     "migrate": "coffee migrate.coffee",
     "deploy": "git push github master",
