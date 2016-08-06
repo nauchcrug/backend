@@ -11,6 +11,6 @@ if not production
   'middlewares'
   'routes'
   'models'
-].forEach (dir) -> global[dir] = "#{join __dirname, dir}/"
+].forEach (dir) -> global[dir] = "#{join cwd(), dir}/"
 
 global.db = require './db'

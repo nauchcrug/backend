@@ -11,7 +11,7 @@
     "lint": "coffeelint -q .",
     "migrate": "coffee migrate.coffee",
     "deploy": "git push github master",
-    "test": "echo \"Error: no test specified\" && exit 1 && gulp test"
+    "test": "mocha"
   },
   "keywords": [
     "express"
@@ -40,8 +40,10 @@
     "serve-static": "^1.11.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "coffeelint": "^1.15.7",
     "dotenv": "^2.0.0",
+    "mocha": "^3.0.1",
     "nodemon": "^1.10.0"
   }
 }
