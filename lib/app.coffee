@@ -1,6 +1,7 @@
 Express = require 'express'
 serve = require 'serve-static'
 {resolve, join} = require 'path'
+{cwd} = process
 redis = require 'connect-redis'
 
 #middlewares
@@ -16,7 +17,7 @@ site = require routes + 'site'
 
 app = new Express
 app.disable 'x-powered-by'
-app.set 'views', join __dirname, 'views'
+app.set 'views', join cwd(), 'views'
 app.set 'view engine', 'pug'
 
 if not production
