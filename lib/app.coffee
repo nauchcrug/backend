@@ -17,7 +17,7 @@ site = require routes + 'site'
 
 app = new Express
 app.disable 'x-powered-by'
-app.set 'views', join cwd(), 'views'
+app.set 'views', join cwd(), 'templates'
 app.set 'view engine', 'pug'
 
 if not production
