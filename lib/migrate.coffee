@@ -63,7 +63,6 @@ else fs.access file, fs.F_OK, (err) ->
     action or= process.argv[3]
     if not action?
       console.error 'no action defined, it must be up or down'
-      process.exit 1
     else
       migrate action, table, fields
 
