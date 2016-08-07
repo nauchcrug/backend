@@ -44,6 +44,7 @@
     "coffeelint": "^1.15.7",
     "dotenv": "^2.0.0",
     "mocha": "^3.0.1",
-    "nodemon": "^1.10.0"
+    "nodemon": "^1.10.0",
+    "pg-monitor": "^0.5.11"
   }
 }

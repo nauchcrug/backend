@@ -1,4 +1,4 @@
-{join} = require 'path'
+{join, resolve} = require 'path'
 {cwd} = process
 {NODE_ENV} = process.env
 global.production = NODE_ENV is 'production'
@@ -11,6 +11,8 @@ if not production
   'middlewares'
   'routes'
   'models'
+  'lib'
 ].forEach (dir) -> global[dir] = "#{join cwd(), dir}/"
-
-global.db = require './db'
+#{db, pgp} = require lib + 'db'
+#global.db = db
+#global.pgp = pgp

@@ -2,8 +2,8 @@ create sequence tasks_seq;
 create table if not exists tasks (
   id serial(11) not null primary key default next_val('tasks_seq'),
   task, // Text of task, Markdown strign
-  part, // Part in exam, e.g.: A, B, C
-  subject
+  part int(1) not null, // Part in exam, e.g.: A, B, C
+  subject varchar(11) not null
 );
 
 create sequence exams_seq;

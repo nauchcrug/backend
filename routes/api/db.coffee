@@ -1,5 +1,6 @@
 {Router} = require 'express'
 router = new Router
+{db} = require lib + 'db'
 sql = 'select table_name from information_schema.tables'
 
 router.get '/', (req, res, next) ->

@@ -1,7 +1,6 @@
 {Router} = require 'express'
 router = new Router
-reject = (err) ->
-  throw err if err
+exam = require models + 'exam'
 
 router.get '/', (req, res) ->
   res.render 'site/subj'
