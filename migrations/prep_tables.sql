@@ -2,7 +2,7 @@ create sequence tasks_seq;
 create table if not exists tasks (
   id serial(11) not null primary key default next_val('tasks_seq'),
   task, // Text of task, Markdown strign
-  part int(1) not null, // Part in exam, e.g.: A, B, C
+  part int(1) not null, /* Part in exam, e.g.: A, B, C */
   subject varchar(11) not null
 );
 
@@ -10,7 +10,7 @@ create sequence exams_seq;
 create table if not exists exams (
   id serial(11) not null primary key default next_val('exams_seq'),
   subject varchar()
-  seq int(11) // List of tasks id
+  seq int(11) /* List of tasks id */
 );
 
 create sequence users_seq;
@@ -19,5 +19,6 @@ create table if not exists users (
   login varchar(11),
   password char(64) not null,
   fullname varchar(40) not null,
-  rate int(11) not null
+  rate int(11) not null,
+  status varchar(40) not null
 );

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nodemon -e 'js coffee cson json sql'",
     "lint": "coffeelint -q .",
-    "migrate": "coffee migrate.coffee",
+    "migrate": "coffee lib/migrate.coffee",
     "deploy": "git push github master",
     "test": "mocha"
   },
@@ -28,6 +28,7 @@
     "coffee-script": "^1.10.0",
     "compression": "^1.6.2",
     "connect-redis": "^3.1.0",
+    "cson": "^3.0.2",
     "express": "^4.14.0",
     "express-jwt": "^3.4.0",
     "express-session": "^1.14.0",
