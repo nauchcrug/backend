@@ -13,7 +13,7 @@ test:
 production:
   type: deploy
   script:
-    - apt-et update -yq
+    - apt-get update -yq
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=nauchkrug --api-key=$HEROKU_API_KEY
