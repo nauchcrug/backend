@@ -12,23 +12,16 @@ services:
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+before_script:
+  - npm install
+
 cache:
   paths:
   - node_modules/
 
-test_async:
-  script:
-   - npm install
-   - npm run test:async
-
-test_db:
-  script:
-   - npm install
-   - npm run test:db
-
 production:
   type: deploy
   script:
-    - deploy.sh
+    - dpl --provider=heroku --app=nauchkrug --api-key=$HEROKU_API_KEY
   only:
-    - tags
+    - production

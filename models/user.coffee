@@ -19,4 +19,4 @@ exports.exists = (login, password) ->
   db.query sql
     .then (user) ->
       if not user.login? then return yes
-      else if user.password?
+      else if user.password? then yes
