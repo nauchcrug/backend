@@ -1,3 +1,6 @@
+notifications:
+  slack: nauchcrug:GEjYS8gwgWcvgMRPe8WCMzwj
+
 branches:
   only:
     - production
