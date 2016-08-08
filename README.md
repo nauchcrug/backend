@@ -4,6 +4,9 @@ Structure:
 * routes - Controllers
 * lib - Libraries
 * public - Static files
+* models - Models
+* templates - Pug templates
+* test - Tests
 
 ###### Build: ```npm run  build```   
 ###### Deploy: ```npm run deploy ```   
