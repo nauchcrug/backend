@@ -8,4 +8,6 @@ Makefile
 .vscode
 .travis.yml
 .nodemonrc
+.coffeelintignore
 stats.json
+migrations

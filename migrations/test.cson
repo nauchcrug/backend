@@ -1,4 +1,0 @@
-table: "test"
-fields: [
-	"id int(11) not null default primary key"
-]

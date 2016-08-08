@@ -30,25 +30,32 @@ migrate = (action = 'up', table, fields) -> switch action
 
 scaffold = (name, type = 'cson') ->
   file = "#{migrations}#{name}.#{type}"
+  save = -> fs.writeFile file, data, (err) ->
+    throw err if err
+    console.log "New migration: #{name}.#{type}"
   obj =
-      table: name
-      fields: [
-        'id int(11) not null default primary key'
-      ]
-  data = CSON.stringify obj, null, '\t'
-  fs.access file, fs.F_OK, (err) -> # Check if exists
-    if not err
-      #console.log "Migration #{name} exists, overwrite? [y/n]: "
+    table: name
+    fields: [
+      'id int(11) not null default primary key'
+    ]
+  data = CSON.stringify obj, null, '  '
+  question = "Migration #{name} exists, overwrite? [y/n]: "
+  fs.access file, fs.F_OK, (err) -> # check if exists
+    #wait = yes
+    if err then save()
+    else
       readline = require 'readline'
       rl = readline.createInterface
         input: process.stdin, output: process.stdout
-      rl.question "Migration #{name} exists, overwrite? [y/n]: ", (ans) ->
-        if /^(y|Y)(es|ES)?$/.test ans then fs.writeFile file, data, (err) ->
-          throw err if err
-          console.log "New migration: #{name}.#{type}"
-        else console.log 'Okay! :-)'
+      rl.question question, (ans) ->
+        test = /^(y|Y)(es|ES)?$/.test ans.trim()
+        if test then save() #wait = no
+        else
+          console.log 'Okay! :-)'
+          process.exit 0
         rl.close()
-  
+    #while not wait then save()
+
 ext = '.sql'
 migration = migrations + process.argv[2]
 file = migration + ext
@@ -61,8 +68,17 @@ else fs.access file, fs.F_OK, (err) ->
     #file = file.replace /\.sql$/, ''
     {action, table, fields} = require migration# + '.coffee'
     action or= process.argv[3]
-    if not action?
-      console.error 'no action defined, it must be up or down'
+
+    # Throw exception if migration doesn't have props
+    if not table?
+      err = new Error 'Undefined .table'
+    else if not fields?
+      err = new Error 'Undefined .fields'
+    else if not fields?
+      err = new Error 'Undefined action, must be up or down'
+
+    if err?
+      console.error err
+      #process.exit 1
     else
       migrate action, table, fields
-
