@@ -2,9 +2,18 @@ cache:
   paths:
   - node_modules/
 
+test:
+  script:
+    - npm install
+    - npm run --quiet lint
+    - npm run --quiet test
+
 production:
   type: deploy
   script:
+    - apt-et update -yq
+    - apt-get install -y ruby-dev
+    - gem install dpl
     - dpl --provider=heroku --app=nauchkrug --api-key=$HEROKU_API_KEY
   only:
     - production
