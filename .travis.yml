@@ -1,6 +1,10 @@
+branches:
+  only:
+    - production
+
 language: node_js
 node_js:
-  - "latest"
+  - "node"
 
 install:
   - npm install
