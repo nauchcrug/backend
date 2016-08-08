@@ -1,5 +1,9 @@
-deploy:
-  provider: heroku
-  app: nauchkrug
-  api_key:
-    secure:
+language: node_js
+node_js:
+  - "latest"
+
+install:
+  - npm install
+
+script:
+  - npm run --silent test
