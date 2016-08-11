@@ -1,3 +1,70 @@
-extends ../layout
-block content
-  h1 Site index
+include layout.pug
+.content-wrapper
+    .greenblockc
+        br
+        br
+        br
+        h1 Добро пожаловать на образовательный проект Науч.Круг!
+        br
+        | Для начала работы выберите область, которая вас интересует.
+        br
+        br
+        br
+        br
+        br
+    .whiteblock
+        center
+            h1.page-header Выберите предмет
+            br
+            br
+            .row.placeholders
+                .col-xs-6.col-sm-3.placeholder
+                    a(href='#')
+                        img.img-responsive(src='images/inf.png', width='100', height='100')
+                    br
+                    |             Информатика
+                .row.placeholders
+                    .col-xs-6.col-sm-3.placeholder
+                        a(href='#')
+                            img.img-responsive(src='images/math.png', width='100', height='100')
+                        br
+                        |             Математика[профиль]
+                        br
+                    .row.placeholders
+                        .col-xs-6.col-sm-3.placeholder
+                            a(href='#')
+                                img.img-responsive(src='images/rus.png', width='100', height='100')
+                            br
+                            |             Русский язык
+                            br
+                        .row.placeholders
+                            .col-xs-6.col-sm-3.placeholder
+                                a(href='#')
+                                    img.img-responsive(src='images/mathb.png', width='100', height='100')
+                                br
+                                |             Математика[базовая]
+                                br
+
+                                br
+                        .blueblock
+                            br
+                            br
+                            br
+                            strong
+                                h1 Почему стоит заниматься на Науч.Круг?
+                                br
+                                img(src='images/comp.png', alt='Почему?')
+                            br
+                            br
+                            br
+                            br
+                            br
+                        .ligthblueblock
+                            br
+                            br
+                            br
+                            strong
+                                h1 Качественный банк заданий
+                                br
+                                img(src='images/comp.png', alt='Почему?')
+                                br
