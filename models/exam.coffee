@@ -1,4 +1,4 @@
 {db} = require lib + 'db'
 
-exports.add = (active) ->
+exports.add = () ->
   console.log db

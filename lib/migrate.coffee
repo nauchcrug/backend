@@ -37,8 +37,9 @@ scaffold = (name, type = 'cson') ->
     table: name
     fields: [
       'id int(11) not null default primary key'
+      'name varchar(11) not null'
     ]
-  data = CSON.stringify obj, null, '  '
+  data = (eval type.toUpperCase()).stringify obj, null, '  '
   question = "Migration #{name} exists, overwrite? [y/n]: "
   fs.access file, fs.F_OK, (err) -> # check if exists
     #wait = yes
@@ -61,7 +62,7 @@ migration = migrations + process.argv[2]
 file = migration + ext
 
 if /^(create|generate|scaffold)$/.test process.argv[2]
-  scaffold process.argv[3]
+  scaffold process.argv[3], process.argv[4]
 else fs.access file, fs.F_OK, (err) ->
   if not err then raw file
   else

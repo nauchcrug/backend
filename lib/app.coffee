@@ -31,6 +31,6 @@ app.use body.json()
 app.use serve 'public' # static files
 app.use '/', site
 app.use '/api', api # API routes
-app.use '/admin', admin
+app.use '/cab', admin
 
 module.exports = app

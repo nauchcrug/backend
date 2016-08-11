@@ -20,3 +20,9 @@ global.CSON = CSON # Add support for cson
 require.extensions['.cson'] = (module, filename) ->
   parsed = CSON.parseFile filename
   module.exports = parsed
+
+SQL = require lib + 'sql'
+global.SQL = SQL
+require.extensions['.sql'] = (module, filename) ->
+  parsed = SQL.parse
+  module.exports = parsed
