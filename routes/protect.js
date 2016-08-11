@@ -6,5 +6,5 @@ Router = require('express').Router;
 router = new Router;
 
 router.get('/', function(req, res) {
-  return console.log('123');
+  res.send('protected');
 });

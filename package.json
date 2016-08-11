@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "migrate": "node lib/migrate",
     "deploy": "git push github master",
-    "test": "mocha"
+    "test": "mocha",
+    "test:watch": "mocha --watch"
   },
   "keywords": [
     "express"

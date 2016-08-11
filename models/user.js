@@ -14,15 +14,15 @@ exports.create = function(login, password, status = 0) {
   };
 };
 
-exports.exists = function(login, password) {
+exports.exists = (login, password) => {
   var sql;
   sql = 'select login, password from users\nwhere login=$1';
   return db.query(sql, [login, password])
-    .then((user) => {
+    .then(user => {
       let {login, password} = user;
       if (!login || !password) {
         console.log(user);
         return true;
       }
-  });
+    });
 };
