@@ -4,6 +4,7 @@ notifications:
 branches:
   only:
     - production
+    - staging
 
 language: node_js
 node_js:
