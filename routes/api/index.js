@@ -1,8 +1,10 @@
 const {Router} = require('express');
 const router = new Router;
 const db = require(routes + 'api/db');
+const get_old = require('./get_old');
 
 router.use('/db', db);
+router.use('/old', get_old)
 
 router.get('/', function(req, res) {
   return res.json({
