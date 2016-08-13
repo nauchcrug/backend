@@ -41,6 +41,14 @@ block script
       tinymce.init(config);
     }
   script.
+    function notify(msg) {
+      const log = window.console.log.bind(console);
+      const el = $('#message');
+      const body = el.find('#message-body');
+      body.html(msg);
+      el.modal();
+      log(msg);
+    }
     function approve(json) {
       const headers = new Headers;
       headers.append('Content-Type', 'application/json');
@@ -48,21 +56,11 @@ block script
         headers,
         method: 'POST'
       };
-      fetch('/cab/add', opts)
+      const url = '/api/task'
+      fetch(url, opts)
         .then(data => data.json())
-        .then(obj => {
-          const el = $('#message');
-          const body = el.find('#message-body')
-          const {status, msg} = obj;
-          body.html(msg);
-          if (status) {
-            console.log('Approved');
-          } else {
-            console.log('Failed');
-          }
-          el.modal();
-        })
-        .catch(err => console.error(err.message))
+        .then(obj => notify(obj.msg))
+        .catch(err => notify(err.message));
     }
     document.querySelector('#add-task').addEventListener('submit', ev => {
       const json = serialize(ev.target);
