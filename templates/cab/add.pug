@@ -1,14 +1,69 @@
 extends layout
 block content
+  section.content-header
+    p.hidden.
+      \[\begin{matrix}
+      \dot{x} & = & \sigma(y-x) \\
+      \dot{y} & = & \rho x - y - xz \\
+      \dot{z} & = & -\beta z + xy
+      \end{matrix} \]
+    h1 Добавление задачи
+    hr.under-heading
   section.content
-    textarea(name="text-work").editor
+    form(role="form", name="add-task", action="javascript:void 0")#add-task
+      fieldset.form-group: .input-group
+        span.input-group-addon Номер задания:  
+        input(name="task", type="text", placeholder="Например: 24").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon Ответ задания:  
+        input(name="answer", type="text", placeholder="Например: Хуец!").form-control
+      fieldset.form-group
+        label: h4 Текст задания
+        textarea(name="text", placeholder="Task")#task-editor
+      button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
 block script
+  //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
   script(defer, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
   script(defer).
     function tinyMCEinit() {
       const config = {
-        selector: '.editor',
-        height: 500
+        selector: '#task-editor',
+        height: 150,
+        setup: editor => editor.on('change', ev => editor.save())
       };
       tinymce.init(config);
+    }
+  script.
+    document.querySelector('#add-task').addEventListener('submit', ev => {
+      //tinymce.triggerSave();
+      const form = ev.target;
+      window.form = form;
+      const formArray = $(form).serializeArray();
+      const formObj = {};
+      for (let i in formArray) {
+        const {name, value} = formArray[i];
+        formObj[name] = value;
+      }
+      alert(JSON.stringify(formObj));
+    });
+  style.
+    hr.under-heading {
+      background: #999;
+      margin-top: 5px;
+      margin-bottom: 0;
+      padding: 0;
+      height: 1px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    #task-editor {
+      visibility: hidden;
+      display: none;  
+    }
+    
+    button#send-task {
+      color: white;
     }
