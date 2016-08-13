@@ -7,6 +7,10 @@
 /*
     Плоские инпуты для текста
 */
+.main-footer {
+  padding: .75em;
+}
+
 .flat-text {
   display: inline-block;
   -webkit-box-sizing: content-box;

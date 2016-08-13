@@ -1,10 +1,8 @@
-- console.log(tasks[0].text)
-
 mixin task(task)
-  h5 Задание #{task.number}
-  h5 Автор #{task.author}
+  h5 Задание: #{task.number}
+  h5 Автор: #{task.author}
   hr
-  p:markdown-it #{task.text}
+  section.task= task.text 
 
 doctype html
 html
@@ -14,7 +12,6 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     style(type="text/css").
       .task-wrap {
-        /*font-size: 10px;*/
         border: 1px solid black;
         padding: 7px;
       }

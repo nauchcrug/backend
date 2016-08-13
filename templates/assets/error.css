@@ -1,0 +1,20 @@
+body {
+  margin: 0 auto;
+  padding: 30px;
+  color: #123;
+  font-size: 14px;
+  font-family: helvetica, arial, sans-serif;
+  background: #eef;
+}
+
+.spacer {
+  padding: 10px;
+}
+
+hr {
+  display: block;
+  background: #111;
+  width: 80%;
+  height: 1px;
+  margin: -3px auto 10px auto;
+}
