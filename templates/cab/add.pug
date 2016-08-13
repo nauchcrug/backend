@@ -52,9 +52,11 @@ block script
     function approve(json) {
       const headers = new Headers;
       headers.append('Content-Type', 'application/json');
+      headers.append('Accept', 'application/json')
       const opts = {
         headers,
-        method: 'POST'
+        method: 'post',
+        body: json
       };
       const url = '/api/task'
       fetch(url, opts)
@@ -64,7 +66,6 @@ block script
     }
     document.querySelector('#add-task').addEventListener('submit', ev => {
       const json = serialize(ev.target);
-      const log = window.console.log.bind(console);
       [
         approve
       ].forEach(f => f(json));
