@@ -1,0 +1,14 @@
+extends layout
+block content
+  section.content
+    textarea(name="text-work").editor
+block script
+  script(defer, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
+  script(defer).
+    function tinyMCEinit() {
+      const config = {
+        selector: '.editor',
+        height: 500
+      };
+      tinymce.init(config);
+    }
