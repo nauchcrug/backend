@@ -39,8 +39,7 @@
     "pg-promise": "^5.2.7",
     "pug": "^2.0.0-beta4",
     "serve-static": "^1.11.1",
-    "tinymce": "^4.4.1",
-    "to-markdown": "^3.0.1"
+    "tinymce": "^4.4.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
