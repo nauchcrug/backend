@@ -22,6 +22,7 @@ block content
         textarea(name="text", placeholder="Task")#task-editor
       button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
 block script
+  script(defer, src="/serialize.js")
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
   script(defer, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
   script(defer).
@@ -35,16 +36,10 @@ block script
     }
   script.
     document.querySelector('#add-task').addEventListener('submit', ev => {
-      //tinymce.triggerSave();
-      const form = ev.target;
-      window.form = form;
-      const formArray = $(form).serializeArray();
-      const formObj = {};
-      for (let i in formArray) {
-        const {name, value} = formArray[i];
-        formObj[name] = value;
-      }
-      alert(JSON.stringify(formObj));
+      const json = serialize(ev.target);
+      [
+        window.console.log.bind(console), window.alert
+      ].forEach(f => f(json))
     });
   style.
     hr.under-heading {
@@ -54,16 +49,13 @@ block script
       padding: 0;
       height: 1px;
     }
-    
     .hidden {
       display: none;
     }
-    
     #task-editor {
       visibility: hidden;
       display: none;  
     }
-    
     button#send-task {
       color: white;
     }
