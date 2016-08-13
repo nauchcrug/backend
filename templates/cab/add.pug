@@ -21,6 +21,12 @@ block content
         label: h4 Текст задания
         textarea(name="text", placeholder="Task")#task-editor
       button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
+  .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
+    //.modal-header
+      //button(type="button", data-dissmiss="modal").close &times;
+      h4.text-center Результат
+    .modal-body: p: h1.text-center#message-body
+      
 block script
   script(defer, src="/serialize.js")
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
@@ -35,11 +41,35 @@ block script
       tinymce.init(config);
     }
   script.
+    function approve(json) {
+      const headers = new Headers;
+      headers.append('Content-Type', 'application/json');
+      const opts = {
+        headers,
+        method: 'POST'
+      };
+      fetch('/cab/add', opts)
+        .then(data => data.json())
+        .then(obj => {
+          const el = $('#message');
+          const body = el.find('#message-body')
+          const {status, msg} = obj;
+          body.html(msg);
+          if (status) {
+            console.log('Approved');
+          } else {
+            console.log('Failed');
+          }
+          el.modal();
+        })
+        .catch(err => console.error(err.message))
+    }
     document.querySelector('#add-task').addEventListener('submit', ev => {
       const json = serialize(ev.target);
+      const log = window.console.log.bind(console);
       [
-        window.console.log.bind(console), window.alert
-      ].forEach(f => f(json))
+        approve
+      ].forEach(f => f(json));
     });
   style.
     hr.under-heading {
