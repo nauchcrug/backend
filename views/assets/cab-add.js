@@ -7,37 +7,30 @@ function tinyMCEinit() {
   tinymce.init(config);
 }
 
-function status(res) {
-  return res.statusText.toLowerCase() === 'ok'
-    ? Promise.resolve(res)
-    : Promise.reject(new Error(res.statusText));
-}
-
-function notify(msg) {
-  const log = window.console.log.bind(console);
+function approve(json) {
   const el = $('#message');
   const body = el.find('#message-body');
-  body.html(msg);
+  body.html('Lodaing...');
   el.modal();
-  log(msg);
-}
-
-function approve(json) {
   console.log(json);
-  const headers = new Headers;
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json')
   const opts = {
-    headers,
     method: 'post',
-    body: json
+    body: json,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   };
   const url = '/api/task'
   fetch(url, opts)
-    .then(status)
-    .then(res => res.json())
-    .then(obj => notify(obj.msg))
-    .catch(err => notify(err.message));
+    .then(res => !res.ok
+      ? Promise.reject(new Error(res.statusText))
+      : res.json()
+    )
+    .then(data => body.html(data.message))
+    .catch(err => {
+      console.log(err)
+      body.html(err.message)
+    });
 }
 document.querySelector('#add-task').addEventListener('submit', ev => {
   ev.preventDefault();

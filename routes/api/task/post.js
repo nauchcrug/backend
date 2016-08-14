@@ -8,15 +8,18 @@ const Task = require('models/task');
   }
 */
 function post(req, res) {
-  console.log(req.xhr);
+  console.log(req.body);
   const task = req.body || req.params;
   Task.approve(task)
     .then(obj => res.json({
-      msg: 'Task approved'
+      message: 'Task approved'
     }))
     .catch(err => {
       console.error(err);
-      res.send(err.message);
+      res.json({
+        error: true,
+        message: err
+      });
     });
 }
 
