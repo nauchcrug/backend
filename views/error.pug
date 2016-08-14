@@ -2,12 +2,13 @@ doctype html
 html
   head
     title Error
-    style
-      include assets/bs-text.css
-      include assets/error.css
   body
     h2.text-center.text-uppercase= err.message
     hr
     .spacer
     if !production
       .stack: pre= err.stack
+    style
+      include assets/bs-text.css
+      include assets/error.css
+

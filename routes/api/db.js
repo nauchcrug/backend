@@ -1,14 +1,14 @@
 const {Router} = require('express');
 const router = new Router;
-const {db} = require(lib + 'db');
+const {db} = require('lib/db');
 
-const sql = 'select * from information_schemas.table';
+const sql = 'select * from information_schema.tables';
 
-router.get('/', (req, res) => {
-  res.set('Content-Type', 'application/json');
+router.get('/', (req, res, next) => {
+  //res.set('Content-Type', 'application/json');
   db.query(sql)
     .then(data => res.json(data))
-    .catch(err => console.error(err));
+    .catch(err => next(err));
 });
 
 module.exports = router;

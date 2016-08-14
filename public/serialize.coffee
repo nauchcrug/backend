@@ -1,32 +1,20 @@
 ###*
-# @param {HTMLElement}
-# @return {JSON}
+# Serialize HTML form to JSON
+# @param {HTMLElement} form - Form element
+# @return {string} json - JSON string
 ###
 @serialize = (form) ->
-  {stringify} = JSON
   low = (str) -> str.toLowerCase()
   obj = {}
-  setKey = (key, val) -> obj[key] = val
+  set = (prop, val) -> @[prop] = val
   if form or low(form.nodeName) isnt 'form'
-    for el in form.elements
-      {name, value} = el
-      switch low el.nodeName
-        when 'textarea'
-          setKey name, value
-        when 'select' then switch el.type
-          when 'select-one'
-            setKey el
-          when 'select-multiple'
-            #obj[el.name] = opt for opt in el.options
-            value = opt for opt in el.options
-            setKey name, value
-        when 'input' then switch el.type
-          when 'text', 'password', 'button', 'reset', 'submit'
-            setKey name, value
-          when 'checkbox', 'radio'
-            setKey name, el.checked
-          #when 'file'
-          #  data = base64encode file
-          #  setKey name, data
-  json = stringify obj
+    for el in form.elements then set.call obj, el.name, switch low(el.nodeName)
+      when 'textarea' then el.value
+      when 'select' then switch el.type
+        when 'select-one' then el.value
+        when 'select-multiple' then el.options
+      when 'input' then switch el.type
+        when 'text', 'password', 'button', 'reset', 'submit' then el.value
+        when 'checkbox', 'radio' then el.value
+  json = JSON.stringify obj
   json

@@ -1,4 +1,4 @@
-const {db} = require(lib + 'db');
+const {db} = require('lib/db');
 
 exports.add = (subject, exam) => db.none(`
   insert into exams (

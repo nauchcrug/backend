@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = new Router;
-exam = require(models + 'exam');
+Exam = require('models/exam');
 
 router.get('/', (req, res) => {
   res.render('site/subj');

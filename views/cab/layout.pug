@@ -21,7 +21,7 @@ html
   body.hold-transition.skin-green.sidebar-mini
     .wrapper
       header.main-header
-        a.logo(href='#')
+        a.logo(href='/')
           span.logo-mini
             b Н
             | К
@@ -88,7 +88,7 @@ html
             li.header Основное
               // Optionally, you can add icons to the links
               li
-                a(href='#')
+                a(href='/cab')
                   i.fa.fa-home
                   span Главная страница
               li
@@ -120,7 +120,7 @@ html
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
                   li
-                    a(href='#') Добавить задачу
+                    a(href='/cab/add') Добавить задачу
                   li
                     a(href='#') Банк задач
                   li
@@ -176,6 +176,9 @@ html
         | .
         |  Все права защищены.
       .control-sidebar-bg
+    //[if IE]
+    //script(src='/polyfills.js')
+    //[endif]
     script(src='https://code.jquery.com/jquery-2.2.4.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(defer, src='/cab/static/dist/js/app.min.js')
