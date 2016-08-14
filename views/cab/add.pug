@@ -13,13 +13,13 @@ block content
     form(role="form", name="add-task")#add-task
       fieldset.form-group: .input-group
         span.input-group-addon Номер задания:
-        input(name="task", type="text", placeholder="Например: 24").form-control
+        input(pattern="[0-9]+", autofocus, required, name="task", type="text", placeholder="Например: 24").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Ответ задания:
-        input(name="answer", type="text", placeholder="Например: Хуец!").form-control
+        input(required, name="answer", type="text", placeholder="Например: Хуец!").form-control
       fieldset.form-group
         label: h4 Текст задания
-        textarea(name="text", placeholder="Task")#task-editor
+        textarea(pattern="\S+", required, name="text", placeholder="Task")#task-editor
       button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
   .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
     //.modal-header

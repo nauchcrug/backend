@@ -1,6 +1,6 @@
-migrations
-.git
 node_modules
+migrations
 test
 public
+views
 ./.*
