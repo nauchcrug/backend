@@ -7,7 +7,7 @@ router.use(auth);
 router.get('/logout', (req, res) => {
   res.logout();
   res.redirect('/auth');
-})
+});
 
 router.get('/callback', passport.authenticate('auth0', {
   failureRedirect: '/error'

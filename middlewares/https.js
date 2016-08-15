@@ -1,12 +1,11 @@
-function https(req, res, next) {
-  console.log(req.headers['x-forwarded-proto']);
+function httpsMiddleware(req, res, next) {
   production && (req.headers['x-forwarded-proto'] !== 'https')
     ? res.redirect('https://' + req.host + req.originalUrl)
     : next();
 }
 
-function factory(opts) {
-  return https;
+function httpsMiddlewareFactory(opts) {
+  return httpsMiddleware;
 }
 
-module.exports = factory;
+module.exports = httpsMiddlewareFactory;

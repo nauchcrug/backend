@@ -10,7 +10,7 @@ const auth0 = new Auth0({
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   callbackURL: process.env.AUTH0_CALLBACK_URL
 }, (accessToken, refreshToken, extraParams, profile, done) => {
-  return done(null, profile)
+  return done(null, profile);
 });
 
 passport.use(auth0);

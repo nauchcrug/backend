@@ -12,4 +12,8 @@ function morgan() {
     : thunk
 }*/
 
-module.exports = !production ? morgan : thunk; 
+function loggerMiddlewareFactory() {
+  return !production ? morgan : thunk
+}
+
+module.exports = loggerMiddlewareFactory(); 

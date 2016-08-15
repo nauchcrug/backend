@@ -2,7 +2,7 @@ function tinyMCEinit() {
   const config = {
     selector: 'textarea',
     height: 200,
-    setup: editor => editor.on('change', ev => editor.save()),
+    setup: editor => editor.on('change', () => editor.save()),
     theme: 'modern',
     plugins: [
       'advlist autolink lists link image charmap print preview hr anchor pagebreak',

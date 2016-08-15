@@ -10,7 +10,7 @@ router.get('/page/:exam', (req, res) => {
     .then(data => data.text())
     .then(str => str.trim())
     .then(json => JSON.parse(json))
-    .then(obj => res.render('site/exam', {tasks: obj, exam}))
+    .then(obj => res.render('site/exam', {tasks: obj, exam, subject}))
     .catch(err => console.error(err.message));
 });
 

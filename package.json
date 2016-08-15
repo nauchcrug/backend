@@ -12,7 +12,9 @@
     "migrate": "node lib/migrate",
     "deploy": "git push github master",
     "test": "mocha",
-    "test:watch": "mocha --watch"
+    "test:watch": "mocha --watch",
+    "doc": "jsdoc",
+    "tree": "tree -h -I node_modules |less"
   },
   "keywords": [
     "express"
