@@ -1,5 +1,6 @@
 function https(req, res, next) {
-  if (production && req.protocol != 'https') {
+  console.log(req.protocol);
+  if (production && (req.protocol !== 'https')) {
     res.redirect('https://' + req.host + req.originalUrl);
   } else {
     next();
