@@ -43,30 +43,24 @@ html
                   // Изображение в логотипе
                   img.user-image(src='/images/avatar1.png', alt='User Image')
                   // hidden-xs hides the username on small devices so only the image appears.
-                  span.hidden-xs $username $surname
+                  span.hidden-xs #{fullname} 
                 ul.dropdown-menu
                   // The user image in the menu
                   li.user-header
                     img.img-circle(src='/images/avatar1.png', alt='User Image')
                     p
-                      | $username $surname
-                      small $user_status
+                      | #{fullname}
+                      small #{status}
                   // Menu Body
                   li.user-body
                     .row
-                      .col-xs-4.text-center
-                        a(href='#') На сайт
-                      .col-xs-4.text-center
-                        a(href='#') Новости
-                      .col-xs-4.text-center
-                        a(href='#') Лента
-                    // /.row
+                      .col-xs-4.text-center: a(href='#') На сайт
+                      .col-xs-4.text-center: a(href='#') Новости
+                      .col-xs-4.text-center: a(href='#') Лента
                     // Menu Footer
                     li.user-footer
-                      .pull-left
-                        a.btn.btn-default.btn-flat(href='#') Профиль
-                      .pull-right
-                        a.btn.btn-default.btn-flat(href='#') Выход
+                      .pull-left: a.btn.btn-default.btn-flat(href='/cab/profile') Профиль
+                      .pull-right: a.btn.btn-default.btn-flat(href='/cab/logout') Выход
               // Кнопка для отправки предложений пользователей
 
       // Left side column. contains the logo and sidebar
@@ -75,12 +69,11 @@ html
         section.sidebar
           // Sidebar user panel (optional)
           .user-panel
-            .pull-left.image
-              img.img-circle(src='/images/avatar1.png', alt='User Image')
+            .pull-left.image: img.img-circle(src='/images/avatar1.png', alt='User Image')
             .pull-left.info
-              p $username $surname
+              p #{fullname}
               // Status
-              a(href='#')
+              a(href='/cab/profile')
                 i.fa.fa-circle.text-success
                 |  В сети
 
@@ -92,24 +85,24 @@ html
                   i.fa.fa-home
                   span Главная страница
               li
-                a(href='#')
+                a(href='/cab/table')
                   i.fa.fa-mortar-board
                   span Статистика
               li.treeview
-                a(href='#')
+                a(href='/cab/reshat')
                   i.fa.fa-briefcase
                   span Решать
                   span.pull-right-container
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
                   li
-                    a(href='#') ЕГЭ по математике
+                    a(href='/exam/math') ЕГЭ по математике
                   li
-                    a(href='#') ЕГЭ по информатике
+                    a(href='/exam/inf') ЕГЭ по информатике
                   li
-                    a(href='#') ЕГЭ по русскому языку
+                    a(href='/exam/rus') ЕГЭ по русскому языку
                   li
-                    a(href='#') ЕГЭ по базовой математике
+                    a(href='/exam/bmath') ЕГЭ по базовой математике
 
             li.header Для модератора
               li.treeview
@@ -119,12 +112,9 @@ html
                   span.pull-right-container
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
-                  li
-                    a(href='/cab/add') Добавить задачу
-                  li
-                    a(href='#') Банк задач
-                  li
-                    a(href='#') Добавить изображение
+                  li: a(href='/cab/add') Добавить задачу
+                  li: a(href='/cab/bank') Банк задач
+                  li: a(href='#') Добавить изображение
               li.treeview
                 a(href='#')
                   i.fa.fa-group
@@ -132,12 +122,9 @@ html
                   span.pull-right-container
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
-                  li
-                    a(href='#') Добавить новую страницу
-                  li
-                    a(href='#') Добавить новость
-                  li
-                    a(href='#') Опубликованное
+                  li: a(href='/pages/add') Добавить новую страницу
+                  li: a(href='/pages/add?news') Добавить новость
+                  li: a(href='/pages') Опубликованное
 
             li.header Администрирование
               li.treeview
@@ -147,10 +134,8 @@ html
                   span.pull-right-container
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
-                  li
-                    a(href='#') Добавить курс
-                  li
-                    a(href='#') Добавить категорию
+                  li: a(href='#') Добавить курс
+                  li: a(href='#') Добавить категорию
 
               li.treeview
                 a(href='#')
@@ -159,14 +144,10 @@ html
                   span.pull-right-container
                     i.fa.fa-angle-left.pull-right
                 ul.treeview-menu
-                  li
-                    a(href='#') Добавить пользователя
-                  li
-                    a(href='#') Поиск пользователя по ID
-
-      div
-        .content-wrapper
-          block content
+                  li: a(href='#') Добавить пользователя
+                  li: a(href='#') Поиск пользователя по ID
+      .content-wrapper
+        block content
       footer.main-footer
         .pull-right.hidden-xs
           | Версия кабинета: 1.1

@@ -33,7 +33,7 @@ block content
 block script
   //script(defer, src="/serialize.js")
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
-  script(defer, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
+  script(async, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
   script(defer)
     include ../assets/cab-add.js
   style.

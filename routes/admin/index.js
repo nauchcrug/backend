@@ -11,21 +11,7 @@ router.get('/', (req, res) => {
   res.render('cab/index');
 });
 
-router.get('/add', (req, res) => {
-  res.render('cab/add');
-});
-
-router.post('/add', (req, res) => {
-  const obj = {
-    status: true,
-    msg: 'Task approved'
-  };
-  if (!req.body) {
-    obj.status = false;
-    obj.msg = 'Task undefined';
-  }
-  console.log(req.body);
-  res.json(obj);
-});
+router.get('/add', (req, res) => res.render('cab/add'));
+router.get('/table', (req, res) => res.render('cab/table'));
 
 module.exports = router;
