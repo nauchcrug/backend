@@ -1,11 +1,15 @@
-const morgan = require('morgan');
-const logger = morgan('dev');
-const thunk = (err, req, res, next) => next();
+function thunk() {
+  return (req, res, next) => next();
+}
 
-module.exports = function() {
-  if (!production) {
-    return logger;
-  } else {
-    return thunk;
-  }
-};
+function morgan() {
+  return require('morgan')('dev');
+}
+
+/*function logger(opts) {
+  return !production
+    ? morgan
+    : thunk
+}*/
+
+module.exports = !production ? morgan : thunk; 

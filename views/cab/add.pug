@@ -13,13 +13,16 @@ block content
     form(role="form", name="add-task")#add-task
       fieldset.form-group: .input-group
         span.input-group-addon Номер задания:
-        input(pattern="[0-9]+", autofocus, required, name="task", type="text", placeholder="Например: 24").form-control
+        input(pattern="[0-9]+", autofocus, required, name="number", type="text", placeholder="Например: 24").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Ответ задания:
-        input(required, name="answer", type="text", placeholder="Например: Хуец!").form-control
+        input(required, name="answer", type="text", placeholder="Например: 2").form-control
       fieldset.form-group
         label: h4 Текст задания
-        textarea(pattern="\S+", required, name="text", placeholder="Task")#task-editor
+        textarea(required, name="text").hidden#task-editor
+      fieldset.form-group
+        label: h4 Пояснение
+        textarea(required, name="description", type="text").hidden#description-editor
       button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
   .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
     //.modal-header
@@ -28,7 +31,7 @@ block content
     .modal-body: h1.text-center#message-body
 
 block script
-  script(defer, src="/serialize.js")
+  //script(defer, src="/serialize.js")
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
   script(defer, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
   script(defer)

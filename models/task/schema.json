@@ -8,13 +8,17 @@
     "text": {
       "type": "string"
     },
-    "task": {
+    "number": {
       "type": "integer"
+    },
+    "description": {
+      "type": "string"
     }
   },
   "required": [
     "answer",
     "text",
-    "task"
+    "number",
+    "description"
   ]
 }

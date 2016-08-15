@@ -1,11 +1,9 @@
-const schema = require('./schema');
 const ajv = require('ajv')();
-const {toNumber} = require('lodash')
+const schema = require('./schema');
 
 function validate(json) {
-  //const task = toNumber(json.task);
-  //task != 0 ? task : json.task //workaround for number in string
-  json.task = parseInt(json.task);
+  // WARNING: JSON doesn't mean JSON, it mean's JS Object, that parsed from JSON
+  json.number = parseInt(json.number); // get number from string (input workaround)
   return new Promise((resolve, reject) => ajv.validate(schema, json)
     ? resolve(json)
     : reject(ajv.errorsText())

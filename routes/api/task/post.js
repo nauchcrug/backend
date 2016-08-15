@@ -1,12 +1,5 @@
 const Task = require('models/task');
 
-/*const getMsg = (state) => state
-  ? {
-    msg: 'Task undefined'
-  } : {
-    msg: 'Task approved'
-  }
-*/
 function post(req, res) {
   console.log(req.body);
   const task = req.body || req.params;
