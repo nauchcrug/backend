@@ -1,10 +1,8 @@
 require('app-module-path').addPath(process.cwd());
 require('lib/sql').hook();
 
-if (process.env.NODE_ENV != 'production') {
-  global.production = (process.env.NODE_ENV === 'production');
-  require('dotenv/config');
-}
+global.production = (process.env.NODE_ENV === 'production');
+!production ? require('dotenv/config') : void 0 
 const {PORT, HOST, npm_lifecycle_event} = process.env;
 
 if (npm_lifecycle_event != 'test') {
