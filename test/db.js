@@ -1,6 +1,6 @@
 require('..');
 const {expect} = require('chai');
-const {db} = require('lib/db');
+//const {db} = require('lib/db');
 
 describe('Models', () => {
   ['task'].forEach(name => {

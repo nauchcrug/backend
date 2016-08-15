@@ -4,7 +4,7 @@ function httpsMiddleware(req, res, next) {
     : next();
 }
 
-function httpsMiddlewareFactory(opts) {
+function httpsMiddlewareFactory() {
   return httpsMiddleware;
 }
 

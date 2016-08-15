@@ -4,7 +4,8 @@ function post(req, res) {
   console.log(req.body);
   const task = req.body || req.params;
   Task.approve(task)
-    .then(obj => res.json({
+    .then(data => res.json({
+      data,
       message: 'Task approved'
     }))
     .catch(err => {

@@ -1,19 +1,13 @@
-function thunk() {
+function thunkMiddleware() {
   return (req, res, next) => next();
 }
 
-function morgan() {
-  return require('morgan')('dev');
+function loggerMiddleware() {
+  return require('morgan')('dev'); // morgan as logger with 'dev' configuration
 }
 
-/*function logger(opts) {
-  return !production
-    ? morgan
-    : thunk
-}*/
-
 function loggerMiddlewareFactory() {
-  return !production ? morgan : thunk
+  return !production ? loggerMiddleware : thunkMiddleware;
 }
 
 module.exports = loggerMiddlewareFactory(); 

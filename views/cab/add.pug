@@ -1,12 +1,6 @@
 extends layout
 block content
   section.content-header
-    p.hidden.
-      \[\begin{matrix}
-      \dot{x} & = & \sigma(y-x) \\
-      \dot{y} & = & \rho x - y - xz \\
-      \dot{z} & = & -\beta z + xy
-      \end{matrix} \]
     h1 Добавление задачи
     hr.under-heading
   section.content
@@ -23,7 +17,7 @@ block content
       fieldset.form-group
         label: h4 Пояснение
         textarea(required, name="description", type="text").hidden#description-editor
-      button(type="submit", name="send").btn.btn-primary.btn-default.btn-flat#send-task Отправить
+      button(type="submit", name="send").btn.btn-default.btn-flat#send-task Отправить
   .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
     //.modal-header
       //button(type="button", data-dissmiss="modal").close &times;
@@ -31,17 +25,16 @@ block content
     .modal-body: h1.text-center#message-body
 
 block script
-  //script(defer, src="/serialize.js")
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
-  script(async, onload="tinyMCEinit()", src="/cab/static/tinymce.min.js")
-  script(defer)
-    include ../assets/cab-add.js
+  script(async, src="/cab/static/tinymce.min.js")
+  script(async, src="/cab-add.js")
+  script(async)
+    include ../assets/cab.js
   style.
-    hr.under-heading {
-      background: #999;
-      margin-top: 5px;
-      margin-bottom: 0;
+    hr.under-heading{
+      background:#999;
+      margin-top:5px;
+      margin-bottom:0;
       padding: 0;
-      height: 1px; }
-    .hidden { visibility:hidden; display:none; }
-    button#send-task { color: #eee; }
+      height: 1px;}
+    .hidden{visibility:hidden;display:none;opacity:0;}

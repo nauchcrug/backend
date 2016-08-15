@@ -1,7 +1,7 @@
 const redis = require('connect-redis');
 const session = require('express-session');
 
-function sessionMiddleware(config) {
+function sessionMiddleware() {
   const options = {
     url: process.env.REDIS_URL
   };

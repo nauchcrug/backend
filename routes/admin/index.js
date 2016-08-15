@@ -9,8 +9,8 @@ function vendor(name) {
 const profile = require('./profile');
 router.use('/profile', profile);
 router.use('/static', [
-    vendor('admin-lte'),
-    vendor('tinymce')
+  vendor('admin-lte'),
+  vendor('tinymce')
 ]);
 
 router.get('/', (req, res) => {
