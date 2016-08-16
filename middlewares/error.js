@@ -1,7 +1,14 @@
+function isJson(accept) {
+  //return req.type === json;
+  console.log(accept);
+  return accept === 'application/json';
+}
+
 function errorHandlerMiddleware(err, req, res, next) {
-  res
-    .status(err.status || 500)
-    .render('error', {err});
+  res.status(err.status || 500)
+  isJson(req.headers.accept)
+    ? res.json({message: err.message})
+    : res.render('error', {err})
   next(); // Last middleware, just for fun :-)
 }
 

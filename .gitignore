@@ -10,3 +10,6 @@ docker-compose.yml
 
 #submodule
 #frontend
+
+# File uploads
+public/upload/*

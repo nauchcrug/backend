@@ -1,3 +1,10 @@
+create table if not exists images (
+  id serial(11) not null primary key,
+  name varchar(11) not null,
+  type varchar(11) not null,
+  content blob not null
+);
+
 create table if not exists tasks (
   id serial(11) not null primary key,
   task text not null, /* Text of task, Markdown strign */

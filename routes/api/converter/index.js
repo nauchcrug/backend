@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const router = new Router;
 const fetch = require('node-fetch');
+const url = `http://nauchcrug.shn-host.ru/convert.php?sub=ex_`;
 
 router.get('/page/:exam', (req, res) => {
   const {exam} = req.params;
@@ -15,17 +16,8 @@ router.get('/page/:exam', (req, res) => {
 });
 
 router.get('/:exam', (req, res) => {
-  const {exam} = req.params;
-  const url = `http://nauchcrug.shn-host.ru/convert.php?sub=ex_${exam}`;
-  res.set('Content-Type', 'application/json');
-  res.set('Accept', 'application/json');
-  options = {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  };
-  fetch(url, options)
+  const {exam} = req.params || '';
+  fetch(url + exam)
     .then(data => data.text())
     .then(str => str.trim())
     .then(json => JSON.parse(json))

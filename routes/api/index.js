@@ -13,6 +13,8 @@ router.use('/auth', auth);
 router.use('/converter', converter);
 router.use('/task', task);
 
+!production ? router.use('/test', require('./test')) : void 0;
+
 router.get('/', function(req, res) {
   return res.json({
     message: 'asga Hasglo, world 21'
