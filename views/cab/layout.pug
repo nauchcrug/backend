@@ -122,6 +122,13 @@ html
                   +link("Добавить новую страницу", "/pages/add")
                   +link("Добавить новость", "/pages/add?news")
                   +link("Опубликованное", "/pages")
+              li.treeview
+                a(href='#')
+                  i.fa.fa-link
+                  span Ссылки
+                  +pullright
+                ul.treeview-menu
+                  +link("Ридмайн")
              
 
             li.header Администрирование
@@ -142,13 +149,7 @@ html
                   +link("Все пользователи")
                   +link("Добавить пользователя")
                   +link("Поиск пользователя по ID")
-              li.treeview
-                a(href='#')
-                  i.fa.fa-link
-                  span Ссылки
-                  +pullright
-                ul.treeview-menu
-                  +link("Ридмайн")
+              
                   
                 
       .content-wrapper
