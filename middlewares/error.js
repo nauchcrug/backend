@@ -1,8 +1,7 @@
 function errorHandlerMiddleware(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    err
-  });
+  res
+    .status(err.status || 500)
+    .render('error', {err});
   next(); // Last middleware, just for fun :-)
 }
 

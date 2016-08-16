@@ -4,13 +4,16 @@ block content
     h1 Добавление задачи
     hr.under-heading
   section.content
-    form(role="form", name="add-task")#add-task
+    form(role="form", name="add-task", enctype="multipart/form-data")#add-task
       fieldset.form-group: .input-group
         span.input-group-addon Номер задания:
-        input(pattern="[0-9]+", autofocus, required, name="number", type="text", placeholder="Например: 24").form-control
+        input(pattern="[0-9]+", autofocus, required, name="number", type="number", placeholder="Например: 24").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Ответ задания:
         input(required, name="answer", type="text", placeholder="Например: 2").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon Изображение:
+        input(required, name="image", type="file").form-control
       fieldset.form-group
         label: h4 Текст задания
         textarea(required, name="text").hidden#task-editor
@@ -28,8 +31,6 @@ block script
   //script(defer, src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTM")
   script(async, src="/cab/static/tinymce.min.js")
   script(async, src="/cab-add.js")
-  script(async)
-    include ../assets/cab.js
   style.
     hr.under-heading{
       background:#999;

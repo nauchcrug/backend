@@ -1,8 +1,8 @@
 const Task = require('models/task');
 
 function post(req, res) {
-  console.log(req.body);
-  const task = req.body || req.params;
+  const task = req.body;
+  task.send = req.file;
   Task.approve(task)
     .then(data => res.json({
       data,

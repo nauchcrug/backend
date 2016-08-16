@@ -3,7 +3,7 @@ const {db} = require('lib/db');
 
 exports.approve = (task) => {
   sql = '';
-  return validate(task) // Promise
-    .then(task => db.query(sql, task));
+  return validate(task); // Promise
+    //.then(task => db.query(sql, task));
   // TODO: db.query
 };

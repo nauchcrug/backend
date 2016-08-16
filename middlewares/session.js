@@ -14,4 +14,8 @@ function sessionMiddleware() {
   });
 }
 
-module.exports = sessionMiddleware;
+function sessionMiddlewareFactory() {
+  return sessionMiddleware();
+}
+
+module.exports = sessionMiddlewareFactory;
