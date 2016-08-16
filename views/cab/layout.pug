@@ -47,13 +47,13 @@ html
                 // Кнопка
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   // Изображение в логотипе
-                  img.user-image(src='/images/avatar1.png', alt='User Image')
+                  img.user-image(src='/images/avatar5.png', alt='User Image')
                   // hidden-xs hides the username on small devices so only the image appears.
                   span.hidden-xs #{fullname}
                 ul.dropdown-menu
                   // The user image in the menu
                   li.user-header
-                    img.img-circle(src='/images/avatar1.png', alt='User Image')
+                    img.img-circle(src='/images/avatar5.png', alt='User Image')
                     p
                       | #{fullname}
                       small #{status}
@@ -75,7 +75,7 @@ html
         section.sidebar
           // Sidebar user panel (optional)
           .user-panel
-            .pull-left.image: img.img-circle(src='/images/avatar1.png', alt='User Image')
+            .pull-left.image: img.img-circle(src='/images/avatar5.png', alt='User Image')
             .pull-left.info
               p #{fullname}
               // Status
@@ -122,6 +122,14 @@ html
                   +link("Добавить новую страницу", "/pages/add")
                   +link("Добавить новость", "/pages/add?news")
                   +link("Опубликованное", "/pages")
+              li.treeview
+                a(href='#')
+                  i.fa.fa-info-circle
+                  span Ссылки
+                  +pullright
+                ul.treeview-menu
+                  +link("Ридмайн")
+                  +link("Гугл таблица","https://goo.gl/aX8Us7")
             li.header Администрирование
               li.treeview
                 a(href='#')
@@ -140,7 +148,9 @@ html
                   +link("Все пользователи")
                   +link("Добавить пользователя")
                   +link("Поиск пользователя по ID")
-                
+
+
+
       .content-wrapper
         //.progress.progress-stripped.active
           .progress-bar(
