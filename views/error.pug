@@ -1,15 +1,19 @@
 doctype html
 html
   head
-    title Error
+    title Ошибка
+    meta(name="viewport" content="width=device-width")
+    link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css")
   body
-    a(href="javascript:history.back()") Go back
-    h2.text-center.text-uppercase= err.message
-    hr
-    .spacer
+    .page-wrap
+      .message-wrap
+        //.message= err.message
+        img(src='/images/email.png')
+        .message= err.status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
+        .description.
+          Вы можете попробовать вернуться на главную страницу, там много полезной информации =)
     if !production
-      .stack: pre= err.stack
-    style
-      include assets/bs-text.css
-      include assets/error.css
-
+      .stack-wrap
+        hr.dotted(style="opacity:0;")
+        pre.stack= err.stack
+    style: include assets/error.css
