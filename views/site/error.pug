@@ -1,5 +1,62 @@
+html
+    head
+        title=errorTitle
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+        meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+        link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+        <!-- Optional theme -->
+        link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css")
+        link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css")
+
+        style.
+            .error {
+                margin: 0 auto;
+                text-align: center;
+
+            }
+
+            .error-code {
+                bottom: 60%;
+                color: #2d353c;
+                font-size: 96px;
+                line-height: 100px;
+                color: white;
+            }
+
+            .error-desc {
+                font-size: 12px;
+
+            }
+
+            .m-b-10 {
+                margin-bottom: 10px !important;
+            }
+
+            .m-b-20 {
+                margin-bottom: 20px !important;
+            }
+
+            .m-t-20 {
+                margin-top: 20px !important;
+            }
+
+            .fone {
+                background-color: #3F51B5;
+                color: white;
+                text-align: center;
+                margin-top: 10%;
+            }
+
+        <!-- Latest compiled and minified JavaScript -->
+        script(src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+
+    body.fone
+        .error
+            .error-code.m-b-10.m-t-20
+                =errorTitle
+                i.fa.fa-warning
+                br
+                img(src='/img/email.png')
+            h2.font-bold Не получилось загрузить эту страницу,
+            .error-desc
+                | Вы можете попробовать вернуться на главную страницу, там много полезной информации =)
