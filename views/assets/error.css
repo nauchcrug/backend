@@ -49,8 +49,8 @@ img {
   margin: 10px 30px 0 30px;
   right: 30px;
   left: 30px;
-  font: 1.1em monospace;
-  line-height: 1.5em;
+  font: 1em monospace;
+  line-height: 1.2em;
   border-radius: 5px;
 }
 
@@ -72,13 +72,16 @@ img {
   .description {
     font-size: 0.8em;
   }
-  .stack-wrap {
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  img {
     visibility: hidden;
     opacity: 0;
   }
 }
 
-@media (max-height: 670px) {
+@media (max-height: 530px) {
   .stack-wrap {
     visibility: hidden;
     opacity: 0;

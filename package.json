@@ -36,6 +36,7 @@
     "express-jwt": "^3.4.0",
     "express-session": "^1.14.0",
     "helmet": "^2.1.2",
+    "jstransformer-clean-css": "^1.1.1",
     "jstransformer-markdown-it": "^0.2.3",
     "jstransformer-uglify-js": "^1.1.1",
     "lodash": "^4.14.1",

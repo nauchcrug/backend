@@ -16,4 +16,29 @@ html
       .stack-wrap
         hr.dotted(style="opacity:0;")
         pre.stack= err.stack
-    style: include assets/error.css
+    style: include:clean-css assets/error.css
+    if !production
+      style
+        :clean-css.
+          @media (max-height: 600px) {
+            img {
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
+          @media (max-width: 700px) {
+            img {
+              opacity: 0;
+              visibility: hidden;
+            }
+            .message-wrap {
+              font-size: 9px;
+            }
+          }
+    else
+      style
+        :clean-css.
+            .stack-wrap {
+              visibility: hidden;
+              display: none;
+            }
