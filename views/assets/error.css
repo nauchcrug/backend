@@ -89,12 +89,15 @@ img {
 }
 
 @media (max-height: 600px) {
-  img {
-    visibility: hidden;
-    opacity: 0;
-  }
   .message-wrap {
     bottom: 10%;
     font-size: 17px;
+  }
+}
+
+@media (max-height: 400px) {
+  img {
+    visibility: hidden;
+    opacity: 0;
   }
 }
