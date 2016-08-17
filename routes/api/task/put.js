@@ -6,7 +6,7 @@ function put(req, res) {
   const {body} = req;
   Task.update(id, body)
     .then(result => res.json({result}))
-    .catch(err => {throw err})
+    .catch(err => Promise.reject(err));
 }
 
 module.exports = put;

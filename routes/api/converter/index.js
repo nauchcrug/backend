@@ -1,13 +1,12 @@
 const {Router} = require('express');
 const router = new Router;
 const fetch = require('node-fetch');
-const url = `http://nauchcrug.shn-host.ru/convert.php?sub=ex_`;
+const url = 'http://nauchcrug.shn-host.ru/convert.php?sub=';
 
-router.get('/page/:exam', (req, res) => {
-  const {exam} = req.params;
-  const subject = `ex_${exam}`;
-  const url = `http://nauchcrug.shn-host.ru/convert.php?sub=ex_${exam}`;
-  fetch(url)
+router.get('/page/:subject', (req, res) => {
+  const {subject} = req.params;
+  const url = `http://nauchcrug.shn-host.ru/convert.php?sub=_${exam}`;
+  fetch(url + subject)
     .then(data => data.text())
     .then(str => str.trim())
     .then(json => JSON.parse(json))
@@ -15,14 +14,17 @@ router.get('/page/:exam', (req, res) => {
     .catch(err => console.error(err.message));
 });
 
-router.get('/:exam', (req, res) => {
-  const {exam} = req.params || '';
-  fetch(url + exam)
+router.get('/:subject', (req, res) => {
+  const {subject} = req.params || '';
+  fetch(url + subject)
     .then(data => data.text())
-    .then(str => str.trim())
+    .then(json => {
+      console.log(json);
+      return json.trim();
+    })
     .then(json => JSON.parse(json))
-    .then(obj => res.json(obj))
-    .catch(err => console.error(err));
+    .then(data => res.json(data))
+    .catch(err => res.json({message: err.message}));
 });
 
 module.exports = router;

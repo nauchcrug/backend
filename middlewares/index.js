@@ -1,7 +1,7 @@
 const middlewares = [];
 
 // Util
-middlewares.push(require('compression')())
+middlewares.push(require('compression')());
 
 
 module.exports = middlewares;
