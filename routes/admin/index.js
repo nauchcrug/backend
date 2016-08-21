@@ -13,9 +13,15 @@ router.use('/static', [
   serve('node_modules/tinymce')
 ]);
 
+//Cpanel standart pages
 router.get('/', (req, res) => res.render('cab/index'));
 router.get('/register', (req, res) => res.render('cab/addUser'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
+router.get('/profile', (req, res) => res.render('cab/profile')); 
+//Cpanel service pages
+
+//Login pages...other...
+
 
 module.exports = router;
