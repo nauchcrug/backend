@@ -15,7 +15,7 @@
     "test:watch": "mocha --watch",
     "doc": "npm run doc:code && npm run doc:api",
     "doc:code": "jsdoc",
-    "doc:api": "apidoc -i ./routes/ -o doc/api",
+    "doc:api": "apidoc -i ./routes/ -o doc/api --markdown true",
     "tree": "tree -h -I node_modules |less"
   },
   "keywords": [
