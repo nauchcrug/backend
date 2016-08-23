@@ -14,3 +14,4 @@ docker-compose.yml
 # File uploads
 public/upload/*
 .idea/
+test/
