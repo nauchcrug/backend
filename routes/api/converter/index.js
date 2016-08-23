@@ -14,6 +14,15 @@ router.get('/page/:subject', (req, res) => {
     .catch(err => console.error(err.message));
 });
 
+/**
+ * @api {get} /converter/:subject Return's subject from old PHP version
+ * @apiName GetSubject
+ * @apiGroup Subject
+ *
+ * @apiParam {String} subject Subject name (e.g.: rus, math, inf)
+ *
+ * @apiSuccess {Object} Subject
+ */
 router.get('/:subject', (req, res) => {
   const {subject} = req.params || '';
   fetch(url + subject)

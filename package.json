@@ -13,7 +13,9 @@
     "deploy": "git push github master",
     "test": "mocha",
     "test:watch": "mocha --watch",
-    "doc": "jsdoc",
+    "doc": "npm run doc:code && npm run doc:api",
+    "doc:code": "jsdoc",
+    "doc:api": "apidoc -i ./routes/ -o doc/api",
     "tree": "tree -h -I node_modules |less"
   },
   "keywords": [
@@ -57,5 +59,12 @@
     "mocha": "^3.0.1",
     "nodemon": "^1.10.0",
     "pg-monitor": "^0.5.11"
+  },
+  "apidoc": {
+    "name": "nauchcrug",
+    "version": "1.0.0",
+    "description": "API endpoints",
+    "title": "API endpoints",
+    "url": "https://nauchcrug.herokuapp.com/api"
   }
 }
