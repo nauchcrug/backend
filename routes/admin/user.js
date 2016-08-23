@@ -1,8 +1,10 @@
 const {Router} = require('express');
 const router = new Router;
 
-router.get('/', (req, res) => res.render('cab/profile'));
-router.get('/login', (req, res) => res.render('cab/login'));
-router.get('/register', (req, res) => res.render('cab/addUser'));
+function genRoute(verb, endpoint, basepath) {}
+
+router.get('/', (req, res) => res.render('cab/user/profile'));
+router.get('/login', (req, res) => res.render('cab/user/login'));
+router.get('/register', (req, res) => res.render('cab/user/register'));
 
 module.exports = router;
