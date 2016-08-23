@@ -1,0 +1,17 @@
+doctype html
+html
+  html
+    title Auth
+    meta(charset="UTF-8")
+  body
+    .wrap
+      button#auth Login
+      if authorized
+        h1 Authorized
+      else
+        h1 Authorization failed
+    script(defer, src="//cdn.auth0.com/js/lock/10.0/lock.min.js")
+    script(defer): include ./assets/auth.js
+    style
+      include ./assets/bs-text.css
+      include ./assets/auth.css

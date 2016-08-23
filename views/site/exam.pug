@@ -1,0 +1,32 @@
+mixin task(task)
+  h5 Задание: #{task.number}
+  h5 Автор: #{task.author}
+  hr
+  section.task= task.text 
+
+doctype html
+html
+  head
+    title Exam #{exam}
+    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    style(type="text/css").
+      .task-wrap {
+        border: 1px solid black;
+        padding: 7px;
+      }
+      .task-wrap hr, hr.light {
+        margin: 0;
+        padding: 2px;
+        height: .1px;
+        width: .1p
+      }
+  body
+    .container
+      h1 Предмет: #{exam}
+      hr.light
+      each task in tasks
+        .row
+          .col-md-12
+            .task-wrap
+              +task(task)

@@ -1,0 +1,17 @@
+notifications:
+  slack: nauchcrug:GEjYS8gwgWcvgMRPe8WCMzwj
+
+branches:
+  only:
+    - production
+    - staging
+
+language: node_js
+node_js:
+  - "node"
+
+install:
+  - npm install
+
+script:
+  - npm run --silent test

@@ -1,0 +1,61 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Nauchkrug backend",
+  "main": "dist/bundle.js",
+  "engines": {
+    "node": "6"
+  },
+  "scripts": {
+    "start": "nodemon -e 'js json sql'",
+    "lint": "eslint .",
+    "migrate": "node lib/migrate",
+    "deploy": "git push github master",
+    "test": "mocha",
+    "test:watch": "mocha --watch",
+    "doc": "jsdoc",
+    "tree": "tree -h -I node_modules |less"
+  },
+  "keywords": [
+    "express"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nauchkrug/backend"
+  },
+  "author": "stalinswag1",
+  "license": "BSD",
+  "dependencies": {
+    "admin-lte": "^2.3.5",
+    "ajv": "^4.4.0",
+    "app-module-path": "^1.1.0",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "connect-redis": "^3.1.0",
+    "express": "^5.0.0-alpha.2",
+    "express-jwt": "^3.4.0",
+    "express-session": "^1.14.0",
+    "helmet": "^2.1.2",
+    "jstransformer-clean-css": "^1.1.1",
+    "jstransformer-markdown-it": "^0.2.3",
+    "jstransformer-uglify-js": "^1.1.1",
+    "lodash": "^4.14.1",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.0",
+    "node-fetch": "^1.6.0",
+    "passport": "^0.3.2",
+    "passport-auth0": "^0.5.2",
+    "pg-promise": "^5.2.7",
+    "pug": "^2.0.0-beta4",
+    "serve-static": "^1.11.1",
+    "tinymce": "^4.4.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
+    "eslint": "^3.2.2",
+    "mocha": "^3.0.1",
+    "nodemon": "^1.10.0",
+    "pg-monitor": "^0.5.11"
+  }
+}

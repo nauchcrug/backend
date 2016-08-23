@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+
+*.env
+*.dev
+.DS_Store
+
+Dockerfile
+docker-compose.yml
+
+#submodule
+#frontend
+
+# File uploads
+public/upload/*
