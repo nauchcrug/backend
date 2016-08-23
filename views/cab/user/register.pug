@@ -1,0 +1,47 @@
+extends ../layout
+block content
+  section.content-header
+    h1 Форма регистрации
+    hr.under-heading
+  section.content
+    form(role="form", name="reg", enctype="multipart/form-data")#add-user
+      fieldset.form-group: .input-group
+        span.input-group-addon user-icon
+        input(autofocus, required, name="name", type="text", placeholder="Логин (пр. anaty2002").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon user-icon
+        input(autofocus, required, name="firstname", type="text", placeholder="Имя (пр. Анатолий)").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon user-icon
+        input(required, name="secondname", type="text", placeholder="Фамилия (пр. Умнов)").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon user-icon
+        input(required, name="email", type="text", placeholder="E-mail (пр. um@yandex.ru)").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon Пароль
+        input(required, name="password", type="text", ).form-control
+      fieldset.form-group: label.checkbox-inline
+        input(required, type='checkbox', name='check', value="1")
+        span.argue Согласны с правилами проекта
+      fieldset.form-group
+        button(type="submit", name="send").btn.btn-default.btn-flat#send-task Отправить
+  .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
+    .modal-header
+      button(type="button", data-dissmiss="modal").close &times;
+      h4.text-center Результат регистрации:
+    .modal-body: h1.text-center#message-body
+
+block script
+  script(async, src="/cab/static/tinymce.min.js")
+  //script(async, src="/cab-add.js")
+  style: clean-css.
+    .notice-sub {
+      margin-bottom: 10px;
+    }
+    hr.under-heading{
+      background:#999;
+      margin-top:5px;
+      margin-bottom:0;
+      padding: 0;
+      height: 1px;}
+    .hidden{transition:opacity .3s ease-in-out;visibility:hidden;display:none;opacity:0;}

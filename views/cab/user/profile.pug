@@ -1,0 +1,106 @@
+extends ../layout
+block content
+  section.content
+    .row
+      .col-md-3
+        .box.box-primary
+          .box-body.box-profile
+            img.profile-user-img.img-responsive.img-circle(src='$image', alt='User profile picture')
+            h3#ns.profile-username.text-center $username $surname
+            p.text-muted.text-center $user_status
+            ul.list-group.list-group-unbordered
+              li.list-group-item
+                b Рейтинг:
+                a.pull-right $rating
+              li.list-group-item
+                b Решено задач:
+                a.pull-right $done
+              li.list-group-item
+                b Добавлено задач:
+                a.pull-right 0
+            // Здесь будут кнопки
+          // /.box-body
+        // /.box
+        .box.box-primary
+          .box-header.with-border
+            h3.box-title О себе
+          // /.box-header
+          .box-body
+            strong
+              i.fa.fa-book.margin-r-5
+              |  Учусь в
+            p.text-muted
+              | $school
+            hr
+            strong
+              i.fa.fa-map-marker.margin-r-5
+              |  Живу в
+            p.text-muted $home
+            hr
+            strong
+              i.fa.fa-pencil.margin-r-5
+              |  Мои награды
+            p
+            hr
+            strong
+              i.fa.fa-file-text-o.margin-r-5
+              |  Коротко о себе
+            p $about
+            hr
+            strong
+              i.fa.fa-file-text-o.margin-r-5
+              |  Предмет
+            p $subject
+      .col-md-9
+        .nav-tabs-custom
+          ul.nav.nav-tabs
+            li.active
+              a(href='#activity', data-toggle='tab') Статистика
+            li
+              a(href='#timeline', data-toggle='tab') Лента
+            li
+              a(href='#settings', data-toggle='tab') Настройки
+          .tab-content
+            #activity.active.tab-pane
+              // Здесь будет статистика
+              | Здесь будет статистика
+            // /.tab-pane
+            #timeline.tab-pane
+              | Здесь будет фид
+            // /.tab-pane
+            #settings.tab-pane
+              form#form_id.form-horizontal(method='POST', action='', name='sender')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') Моё имя
+                  .col-sm-10
+                    input#inputName.form-control(type='text', value='$username', name='name')
+                .form-group
+                  label.col-sm-2.control-label(for='inputEmail') Моя фамилия
+                  .col-sm-10
+                    input#inputSurname.form-control(type='text', name='surname', value='$surname')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') Мой Email
+                  .col-sm-10
+                    input#inputEmail.form-control(type='text', name='email', value='$email', readonly='true')
+                .form-group
+                  label.col-sm-2.control-label(for='inputExperience') Коротко о себе
+                  .col-sm-10
+                    textarea#inputExperience.form-control(name='abme') $about
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Я учусь в
+                  .col-sm-10
+                    input#inputSkills.form-control(type='text', value='$school', name='teach', placeholder='Ваше образовательное учреждение')
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Я живу в
+                  .col-sm-10
+                    input#inputHome.form-control(type='text', value='$home', name='home', placeholder='')
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Предмет:
+                  .col-sm-10
+                    input#inputSubj.form-control(type='text', value='$subject', name='subject', placeholder='')
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#upd.btn.btn-danger(type='button', onclick="FormSend('result_div_id', 'form_id', '_profile_edit.php')") Сохранить
+              #result_div_id
