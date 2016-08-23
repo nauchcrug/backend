@@ -18,5 +18,6 @@ router.get('/register', (req, res) => res.render('cab/addUser'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
 router.get('/profile', (req, res) => res.render('cab/profile'));
+router.get('/login', (req, res) => res.render('cab/login'));
 module.exports = router;
 
