@@ -12,6 +12,8 @@ if (npm_lifecycle_event != 'test' && !module.parent) {
   server.listen(PORT, HOST, err => err
     ? console.error(err)
     : console.log(`Express listening on ${HOST}:${PORT}`)
+  server.listen(PORT, HOST, () =>
+    console.log(`Express listening on ${HOST}:${PORT}`)
   );
 }
 

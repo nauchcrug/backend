@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const {expect} = require('chai');
 
 class Increment {
@@ -17,5 +18,4 @@ describe('Incrementer', () => {
       const result = parseInt('' + incr);
       expect(result).to.eq(i);
     });
-  }
 });

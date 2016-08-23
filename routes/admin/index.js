@@ -19,3 +19,4 @@ router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
 
 module.exports = router;
+

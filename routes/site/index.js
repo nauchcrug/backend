@@ -12,3 +12,4 @@ router.get('/test_error', (req, res) => {
 
 router.use('/exams', exams);
 module.exports = router;
+
