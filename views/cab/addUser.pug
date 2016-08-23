@@ -6,7 +6,7 @@ block content
   section.content
     form(role="form", name="reg", enctype="multipart/form-data")#add-user
       fieldset.form-group: .input-group
-        span.input-group-addon Ваше логин:
+        span.input-group-addon Ваш логин:
         input(autofocus, required, name="name", type="text", placeholder="Anatoliy").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Ваше имя:
@@ -16,16 +16,16 @@ block content
         input(required, name="secondname", type="text", placeholder="Умнов").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Ваша электронная почта
-        input(required, name="email", type="text", placeholder="um@yandex.ru").form-control
+        input(required, name="email", type="email", placeholder="um@yandex.ru").form-control
       fieldset.form-group: .input-group
         span.input-group-addon Пароль
-        input(required, name="password", type="text", ).form-control
+        input(required, name="password", type="password", ).form-control
       fieldset.form-group: .input-group
         input(required, type='checkbox', name='check', value='1').form-control
       .notice
       span.notice-sub Согласны с правилами проекта
       fieldset.form-group
-        button(type="submit", name="send").btn.btn-default.btn-flat#send-task Отправить
+        button(type="submit", name="send").btn.btn-default.btn-flat#send-task Зарегистироваться
   .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
     .modal-header
       button(type="button", data-dissmiss="modal").close &times;
