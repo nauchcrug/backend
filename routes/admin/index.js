@@ -11,7 +11,6 @@ router.use('/static', [
   serve('node_modules/tinymce')
 ]);
 
-//Роуты для Кирилла
 router.get('/', (req, res) => res.render('cab/index'));
 router.get('/register', (req, res) => res.render('cab/addUser'));
 router.get('/add', (req, res) => res.render('cab/add'));
