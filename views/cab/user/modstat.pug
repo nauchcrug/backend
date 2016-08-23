@@ -1,0 +1,32 @@
+extends ../layout
+block content
+  section.content
+    .row
+       .col-md-3
+     
+      .box.box-primary
+        .box-header.with-border
+          h3.box-title Общая статистика
+        
+        .box-body
+          strong
+            i.fa.fa-book.margin-r-5
+            |  Общее количество вопросов в базе:
+          p.text-muted $count
+          hr
+          strong
+            i.fa.fa-map-marker.margin-r-5
+            | Добавлено мною вопросов:
+          p.text-muted $mycount
+          hr
+          strong
+            i.fa.fa-pencil.margin-r-5
+            | По предметам:
+          p Математика (Профиль)
+          p.text-muted $matp
+          p Математика (База)
+          p.text-muted $matb
+          p Информатика
+          p.text-muted $inf
+          p Русский язык
+          p.text-muted $rus
