@@ -8,7 +8,7 @@ function errorHandlerMiddleware(err, req, res, next) {
   res.status(err.status || 500);
   err.message = 'Произошла ошибка. Попробуйте вернуться на главную страницу';
   const {status, message} = err;
-  console.error(err.stack);
+  //if (!test) console.error(err.stack);
   req.headers.accept === 'application/json'
     ? res.json({message, status})
     : res.render('error', {err});

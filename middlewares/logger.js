@@ -7,7 +7,9 @@ function loggerMiddleware() {
 }
 
 function loggerMiddlewareFactory() {
-  return !production ? loggerMiddleware : thunkMiddleware;
+  return (!production && !test)
+    ? loggerMiddleware
+    : thunkMiddleware;
 }
 
-module.exports = loggerMiddlewareFactory(); 
+module.exports = loggerMiddlewareFactory();

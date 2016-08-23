@@ -7,12 +7,12 @@
     "node": "6"
   },
   "scripts": {
-    "start": "nodemon -e 'js json sql'",
+    "start": "nodemon -e 'js json'",
     "lint": "eslint .",
     "migrate": "node lib/migrate",
     "deploy": "git push github master",
-    "test": "mocha",
-    "test:watch": "mocha --watch",
+    "test": "mocha --ui bdd --recursive",
+    "test:watch": "npm --silent run test -- --watch",
     "doc": "npm run doc:code && npm run doc:api",
     "doc:code": "jsdoc",
     "doc:api": "apidoc -i ./routes/ -o doc/api --markdown true",
@@ -58,7 +58,8 @@
     "eslint": "^3.2.2",
     "mocha": "^3.0.1",
     "nodemon": "^1.10.0",
-    "pg-monitor": "^0.5.11"
+    "pg-monitor": "^0.5.11",
+    "supertest": "^2.0.0"
   },
   "apidoc": {
     "name": "nauchcrug",

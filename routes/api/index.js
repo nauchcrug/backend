@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const router = new Router;
+const {log} = require('lib/util');
 
 // APIs
 const db = require('./db');
@@ -37,11 +38,10 @@ router.get('/', function(req, res) {
  *
  * @apiSuccess {Number} id ID
  */
-router.post('/', function(req, res) {
-  var id;
-  id = req.body.id;
-  console.log(id);
-  return res.json(id);
+router.post('/:id', function(req, res) {
+  const {id} = req.params;
+  log(id);
+  return res.json({id});
 });
 
 module.exports = router;
