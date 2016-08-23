@@ -52,57 +52,60 @@ block content
               i.fa.fa-file-text-o.margin-r-5
               |  Предмет
             p $subject
-          // /.box-body
-        // /.box
-      // /.col
-      //.col-md-9
-      //  .nav-tabs-custom
-      //    ul.nav.nav-tabs
-      //      li.active
-      //        a(href='#activity', data-toggle='tab') Статистика
-      //      li
-      //        a(href='#timeline', data-toggle='tab') Лента
-      //    .tab-content
-      //      #activity.active.tab-pane
-      //        // Здесь будет статистика
-      //        | Здесь будет статистика
-      //      // /.tab-pane
-      //      #timeline.tab-pane
-      //        | Здесь будет фид
-      //      // /.tab-pane
-      //      #settings.tab-pane
-      //        form#form_id.form-horizontal(method='POST', action='', name='sender')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputName') Моё имя
-      //            .col-sm-10
-      //              input#inputName.form-control(type='text', value='$username', name='name')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputEmail') Моя фамилия
-      //            .col-sm-10
-      //              input#inputName.form-control(type='text', name='surname', value='$surname')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputName') Мой Email
-      //            .col-sm-10
-      //              input#inputEmail.form-control(type='text', name='email', value='$email', readonly='true')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputExperience') Коротко о себе
-      //            .col-sm-10
-      //              textarea#inputExperience.form-control(name='abme') $about
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputSkills') Я учусь в
-      //            .col-sm-10
-      //              input#inputSkills.form-control(type='text', value='$school', name='teach', placeholder='Ваше образовательное учреждение')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputSkills') Я живу в
-      //            .col-sm-10
-      //              input#inputHome.form-control(type='text', value='$home', name='home', placeholder='')
-      //          .form-group
-      //            label.col-sm-2.control-label(for='inputSkills') Предмет:
-      //            .col-sm-10
-      //              input#inputSubj.form-control(type='text', value='$subject', name='subject', placeholder='')
-      //            .form-group
-      //              .col-sm-offset-2.col-sm-10
-      //            .form-group
-      //              .col-sm-offset-2.col-sm-10
-      //                button#upd.btn.btn-danger(type='button', onclick="FormSend('result_div_id', 'form_id', '_profile_edit.php')") Сохранить
-      //        #result_div_id
+           .box-body
+         .box
+       .col
+      .col-md-9
+        .nav-tabs-custom
+          ul.nav.nav-tabs
+            li.active
+              a(href='#activity', data-toggle='tab') Статистика
+            li
+              a(href='#timeline', data-toggle='tab') Лента
+            li
+              a(href='#settings', data-toggle='settings') Настройки
+
+          .tab-content
+            #activity.active.tab-pane
+              // Здесь будет статистика
+              | Здесь будет статистика
+            // /.tab-pane
+            #timeline.tab-pane
+              | Здесь будет фид
+            // /.tab-pane
+            #settings.tab-pane
+              form#form_id.form-horizontal(method='POST', action='', name='sender')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') Моё имя
+                  .col-sm-10
+                    input#inputName.form-control(type='text', value='$username', name='name')
+                .form-group
+                  label.col-sm-2.control-label(for='inputEmail') Моя фамилия
+                  .col-sm-10
+                    input#inputSurname.form-control(type='text', name='surname', value='$surname')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') Мой Email
+                  .col-sm-10
+                    input#inputEmail.form-control(type='text', name='email', value='$email', readonly='true')
+                .form-group
+                  label.col-sm-2.control-label(for='inputExperience') Коротко о себе
+                  .col-sm-10
+                    textarea#inputExperience.form-control(name='abme') $about
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Я учусь в
+                  .col-sm-10
+                    input#inputSkills.form-control(type='text', value='$school', name='teach', placeholder='Ваше образовательное учреждение')
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Я живу в
+                  .col-sm-10
+                    input#inputHome.form-control(type='text', value='$home', name='home', placeholder='')
+                .form-group
+                  label.col-sm-2.control-label(for='inputSkills') Предмет:
+                  .col-sm-10
+                    input#inputSubj.form-control(type='text', value='$subject', name='subject', placeholder='')
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#upd.btn.btn-danger(type='button', onclick="FormSend('result_div_id', 'form_id', '_profile_edit.php')") Сохранить
+              #result_div_id
