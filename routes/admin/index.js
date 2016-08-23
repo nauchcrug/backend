@@ -13,6 +13,7 @@ router.get('/', (req, res) => res.render('cab/index'));
 router.get('/register', (req, res) => res.render('cab/addUser'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
+router.get('/modstat', (req, res) => res.render('cab/modstat'));
 router.use('/user', user);
 
 module.exports = router;
