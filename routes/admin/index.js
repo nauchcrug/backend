@@ -6,8 +6,6 @@ function vendor(name) {
   return serve(`node_modules/${name}`);
 }
 
-//const profile = require('./profile');   Разкомменить
-//router.use('/profile', profile);
 router.use('/static', [
   serve('node_modules/admin-lte'),
   serve('node_modules/tinymce')
