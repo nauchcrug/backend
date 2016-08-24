@@ -1,0 +1,32 @@
+extends ../layout
+block content
+  section.content-header
+    h1 Управление командой
+    hr.under-heading
+   section.content
+      form#add-user(role='form', name='capitan', enctype='multipart/form-data')
+        fieldset.form-group
+          .input-group
+            span.input-group-addon Назначить дату собрания:
+            input.form-control(autofocus='autofocus',  name='date', type='date')
+        fieldset.form-group
+          .input-group
+            span.input-group-addon Добавить новость:
+            textarea(name='news', placeholder='Тут можно добавить новость для редакторов, прикручу потом форму')
+        fieldset.form-group
+          button#send-task.btn.btn-default.btn-flat(type='submit', name='send') Сохранить
+
+block script
+  //script(async, src="/cab/static/tinymce.min.js")
+  //script(async, src="/cab-add.js")
+  style: clean-css.
+    .notice-sub {
+      margin-bottom: 10px;
+    }
+    hr.under-heading{
+      background:#999;
+      margin-top:5px;
+      margin-bottom:0;
+      padding: 0;
+      height: 1px;}
+    .hidden{transition:opacity .3s ease-in-out;visibility:hidden;display:none;opacity:0;}
