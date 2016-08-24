@@ -12,6 +12,7 @@ router.use('/static', [
 router.get('/', (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
+router.get('/control', (req, res) => res.render('cab/controlteam'));
 router.use('/user', user);
 
 module.exports = router;
