@@ -13,4 +13,9 @@ docker-compose.yml
 
 # File uploads
 public/upload/*
+
 .idea/
+
+# Result of test:html
+test/out
+
