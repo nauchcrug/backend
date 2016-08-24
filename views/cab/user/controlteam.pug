@@ -3,16 +3,14 @@ block content
   section.content-header
     h1 Управление командой
     hr.under-heading
-   section.content
+    section.content
       form#add-user(role='form', name='capitan', enctype='multipart/form-data')
-        fieldset.form-group
-          .input-group
-            span.input-group-addon Назначить дату собрания:
-            input.form-control(autofocus='autofocus',  name='date', type='date')
-        fieldset.form-group
-          .input-group
-            span.input-group-addon Добавить новость:
-            textarea(name='news', placeholder='Тут можно добавить новость для редакторов, прикручу потом форму')
+        fieldset.form-group: .input-group
+          span.input-group-addon Назначить дату собрания:
+          input.form-control(autofocus='autofocus',  name='date', type='date')
+        fieldset.form-group: .input-group
+          span.input-group-addon Добавить новость:
+          textarea(name='news', placeholder='Тут можно добавить новость для редакторов, прикручу потом форму')
         fieldset.form-group
           button#send-task.btn.btn-default.btn-flat(type='submit', name='send') Сохранить
 

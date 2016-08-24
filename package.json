@@ -13,7 +13,7 @@
     "deploy": "git push github master",
     "test": "mocha -r ./index.js -u bdd --recursive -G",
     "test:watch": "npm --silent run test -- -w",
-    "doc": "npm run doc:code && npm run doc:api",
+    "doc": "npm --silent run doc:code && npm --silent run doc:api",
     "doc:code": "jsdoc",
     "doc:api": "apidoc -i ./routes/ -o doc/api --markdown true",
     "tree": "tree -h -I node_modules |less"
