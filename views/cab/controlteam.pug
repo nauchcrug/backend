@@ -6,8 +6,11 @@ block content
     <section class="content">
       <form id="add-user" role="form" name="capitan" enctype="multipart/form-data">
         <fieldset class="form-group">
-          <div class="input-group"><span class="input-group-addon">Назначить дату собрания:</span>
-            <input autofocus="autofocus" name="date" type="date" class="form-control"/>
+          <div class="input-group date">
+            <span class="input-group-addon">Назанчить дату собрания
+              <i class="fa fa-calendar"></i>
+            </span>
+            <input type="text" class="form-control pull-right" id="datepicker">
           </div>
         </fieldset>
         <fieldset class="form-group">
