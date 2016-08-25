@@ -1,4 +1,4 @@
-extends ../layout
+extends layout
 block content
   section.content-header
     h1 Управление командой
@@ -8,8 +8,8 @@ block content
         fieldset.form-group: .input-group
           span.input-group-addon Назначить дату собрания:
           input.form-control(autofocus='autofocus',  name='date', type='date')
-        fieldset.form-group: .input-group
-          span.input-group-addon Добавить новость:
+        fieldset.form-group
+          label: span Добавить новость:
           textarea(required, name="text").hidden#add-news
         fieldset.form-group
           button#send-task.btn.btn-default.btn-flat(type='submit', name='send') Сохранить
@@ -18,9 +18,6 @@ block script
   script(async, src="/cab/static/tinymce.min.js")
   script(async, src="/cab-add.js")
   style: clean-css.
-    .notice-sub {
-      margin-bottom: 10px;
-    }
     hr.under-heading{
       background:#999;
       margin-top:5px;
