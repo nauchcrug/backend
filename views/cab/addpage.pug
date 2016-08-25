@@ -1,0 +1,23 @@
+extends layout
+block content
+  <section class="content-header">
+    <h1>Добавить новую страницу</h1>
+    <hr class="under-heading"/>
+    <section class="content">
+      <form id="addpage" role="form" name="addpage" enctype="multipart/form-data">
+        <fieldset class="form-group">
+          <label>Название страницы:</label>
+          <input  required="required" type="text" name="title" class="form-control" placeholder="Новости">
+        </fieldset>
+        <fieldset class="form-group">
+          <label><span>Текст:</span></label>
+          <textarea required="required" name="text" id="desc-page" class="hidden"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <button id="send-task" type="submit" name="send" class="btn btn-default btn-flat">Сохранить</button>
+        </fieldset>
+      </form>
+    </section>
+  </section>
+  <script async src="/cab/static/tinymce.min.js"></script>
+  <script async src="/cab-add.js"></script>
