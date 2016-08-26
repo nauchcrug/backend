@@ -1,27 +1,29 @@
 extends layout
 block content
-  section.content-header
-    h1 Управление командой
-    hr.under-heading
-    section.content
-      form#add-user(role='form', name='capitan', enctype='multipart/form-data')
-        fieldset.form-group: .input-group
-          span.input-group-addon Назначить дату собрания:
-          input.form-control(autofocus='autofocus',  name='date', type='date')
-        fieldset.form-group
-          label: span Добавить новость:
-          textarea(required, name="text").hidden#add-news
-        fieldset.form-group
-          button#send-task.btn.btn-default.btn-flat(type='submit', name='send') Сохранить
-
-block script
-  script(async, src="/cab/static/tinymce.min.js")
-  script(async, src="/cab-add.js")
-  style: clean-css.
-    hr.under-heading{
-      background:#999;
-      margin-top:5px;
-      margin-bottom:0;
-      padding: 0;
-      height: 1px;}
-    .hidden{transition:opacity .3s ease-in-out;visibility:hidden;display:none;opacity:0;}
+  <section class="content-header">
+    <h1>Управление командой</h1>
+    <hr class="under-heading"/>
+    <section class="content">
+      <form id="add-user" role="form" name="capitan" enctype="multipart/form-data">
+        <fieldset class="form-group">
+          <label>Дата собрания:</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input type="date" class="form-control" name="datesobr">
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <label><span>Добавить новость:</span></label>
+          <textarea required="required" name="text" id="add-news" class="hidden"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <button id="send-task" type="submit" name="send" class="btn btn-default btn-flat">Сохранить</button>
+        </fieldset>
+      </form>
+    </section>
+  </section>
+  <script async src="/cab/static/tinymce.min.js"></script>
+  <script async src="/cab-add.js"></script>
+  
