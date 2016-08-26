@@ -5,8 +5,9 @@ function NotFoundMiddleware(req, res, next) {
 }
 
 function errorHandlerMiddleware(err, req, res, next) {
+  console.log(err);
   res.status(err.status || 500);
-  err.message = 'Произошла ошибка. Попробуйте вернуться на главную страницу';
+  if (production) err.message = 'Произошла ошибка. Попробуйте вернуться на главную страницу';
   const {status, message} = err;
   if (!test) console.error(err.stack);
   req.headers.accept === 'application/json'

@@ -28,6 +28,6 @@ exports.exists = (login, password) => {
 };
 
 exports.update = function (name,surname,email,about,school,home,subject){
-    var sql = ("UPDATE users SET username='%s', surname='%s', email='%s', about='%s', school='%s', home='%s', subject='%s'", name,surname,email,about,school,home,subject);
-    db.none(sql);
+  var sql = ('UPDATE users SET username=\'%s\', surname=\'%s\', email=\'%s\', about=\'%s\', school=\'%s\', home=\'%s\', subject=\'%s\'', name,surname,email,about,school,home,subject);
+  db.none(sql);
 };

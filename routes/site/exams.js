@@ -1,23 +1,21 @@
 const {Router} = require('express');
 const router = new Router;
-Exam = require('models/exam');
+//Exam = require('models/exam');
+const oldApi = require('lib/oldApi');
 
 router.get('/', (req, res) => {
-  res.render('site/subj');
+  res.render('site/allExams'); // List of subjects
 });
 
 router.get('/:subject', (req, res) => {
-  let {subject} = req.params;
-  res.render('site/subject', {
-    subject
+  const {subject} = req.params;
+  oldApi(subject, (obj, err) => {
+    if (err !== 200) throw obj;
+    else res.render('site/exam', {
+      subject,
+      tasks: obj
+    });
   });
-});
-
-router.get('/:subject/:exam', (req, res) => {
-  let {subject, exam} = req.params;
-  exam.get(subject, exam)
-    .then(data => res.json(data))
-    .catch(err => console.error(err));
 });
 
 module.exports = router;

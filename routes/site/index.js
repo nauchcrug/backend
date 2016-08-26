@@ -3,13 +3,13 @@ const router = new Router;
 const exams = require('./exams');
 
 router.get('/', (req, res) => {
-  return res.render('site/index');
+  res.render('site/index');
 });
 
 router.get('/test_error', (req, res) => {
-
+  throw new Error('test');
 });
 
-router.use('/exams', exams);
+router.use('/exam', exams);
 module.exports = router;
 

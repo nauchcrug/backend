@@ -1,16 +1,21 @@
-mixin task(task)
-  h5 Задание: #{task.number}
-  h5 Автор: #{task.author}
-  hr
-  section.task !{task.text }
+-
+  const subjs = [{
+    url: 'rus', name: 'Русский Язык'
+  },{
+    url: 'inf', name: 'Информатика'
+  },{
+    url: 'math', name: 'Математика'
+  }]
+mixin link(subj)
+  a(href=`/exam/${subj.url}`).subj-link= subj.name
 
 doctype html
 html
   head
-    title Exam #{subject}
+    title Все предметы
     meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    style(type="text/css").
+    style(type="text/css"): clean-css.
       .task-wrap {
         border: 1px solid black;
         padding: 7px;
@@ -21,12 +26,8 @@ html
         height: .1px;
         width: .1p
       }
-  body
-    .container
-      h1 Предмет: #{subject}
-      hr.light
-      each task in tasks
-        .row
-          .col-md-12
-            .task-wrap
-              +task(task)
+  body: .container
+    h1 Предметы
+    ul.exams: each subj in subjs
+      li.subj: +link(subj)
+
