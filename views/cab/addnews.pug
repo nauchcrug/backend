@@ -1,0 +1,23 @@
+extends layout
+block content
+  <section class="content-header">
+    <h1>Добавить новую новость</h1>
+    <hr class="under-heading"/>
+    <section class="content">
+      <form id="addpage" role="form" name="addpage" enctype="multipart/form-data">
+        <fieldset class="form-group">
+          <label>Заголовок:</label>
+          <input  required="required" type="text" name="titlenews" class="form-control" placeholder="Например:Новые измениня в КИМАХ 2017">
+        </fieldset>
+        <fieldset class="form-group">
+          <label><span>Текст новости:</span></label>
+          <textarea required="required" name="text" id="desc-news" class="hidden"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <button id="send-task" type="submit" name="send" class="btn btn-default btn-flat">Добавить новость</button>
+        </fieldset>
+      </form>
+    </section>
+  </section>
+  <script async src="/cab/static/tinymce.min.js"></script>
+  <script async src="/cab-add.js"></script>
