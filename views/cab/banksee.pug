@@ -1,0 +1,31 @@
+extends layout
+block content
+  <div class="content-wrapper">
+    <!-- Шапка страницы -->
+    <section class="content-header">
+      <h1>
+        Посмотреть задания из банка задач
+        <small>Выберите интересующий вас раздел</small>
+      </h1>
+    </section>
+
+    <!-- Секция контента -->
+    <section class="content">
+          <form name="sender" method="POST">
+            <select class="form-control" name="main">
+              <option value="ex_inf">Информатика</option>
+              <option value="ex_math">Математика[Профиль]</option>
+              <option value="ex_rus">Русский язык</option>
+              <option value="ex_mathb">Математика [Базовая]</option>
+              <option value="ex_lit">Литература</option>
+              <option value="ex_eng">Английский язык</option>
+              <option value="ex_obs">Обществознание</option>
+           </select><br>
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Посмотреть" name="see">
+          </form>
+
+
+
+    </section>
+    <!-- /.content -->
+    </div>
