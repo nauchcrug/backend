@@ -1,47 +1,63 @@
-extends ../layout
-block content
-  section.content-header
-    h1 Форма регистрации
-    hr.under-heading
-  section.content
-    form(role="form", name="reg", enctype="multipart/form-data")#add-user
-      fieldset.form-group: .input-group
-        span.input-group-addon Логин
-        input(autofocus, required, name="name", type="text", placeholder="vasya2016").form-control
-      fieldset.form-group: .input-group
-        span.input-group-addon Имя
-        input(autofocus, required, name="firstname", type="text", placeholder="Пупкин").form-control
-      fieldset.form-group: .input-group
-        span.input-group-addon Фамилия
-        input(required, name="secondname", type="text", placeholder="Пупкин").form-control
-      fieldset.form-group: .input-group
-        span.input-group-addon E-mail
-        input(required, name="email", type="email", placeholder="vaspupkin@vas.ru").form-control
-      fieldset.form-group: .input-group
-        span.input-group-addon Пароль
-        input(required, name="password", type="password").form-control
-      fieldset.form-group: label.checkbox-inline
-        input(required, type='checkbox', name='check', value="1")
-        | Согласны с правилами проекта
-      fieldset.form-group
-        button(type="submit", name="send").btn.btn-default.btn-flat#send-task Отправить
-  .modal.fade#message(role="dialog", tabindex="-1", aria-labeledby="#message-label"): .modal-dialog(role="document"): .modal-content
-    .modal-header
-      button(type="button", data-dissmiss="modal").close &times;
-      h4.text-center Результат регистрации:
-    .modal-body: h1.text-center#message-body
-
-block script
-  script(async, src="/cab/static/tinymce.min.js")
-  //script(async, src="/cab-add.js")
-  style: clean-css.
-    .notice-sub {
-      margin-bottom: 10px;
-    }
-    hr.under-heading{
-      background:#999;
-      margin-top:5px;
-      margin-bottom:0;
-      padding: 0;
-      height: 1px;}
-    .hidden{transition:opacity .3s ease-in-out;visibility:hidden;display:none;opacity:0;}
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Науч.Круг - личный кабинет
+    // Tell the browser to be responsive to screen width
+    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+    // Bootstrap 3.3.6
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    // Font Awesome
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+    // Ionicons
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+    link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
+    link(rel='stylesheet', href='/cab/static/dist/css/skins/skin-green.min.css')
+    //link(rel='stylesheet', href='/cab/static/plugins/datatables/dataTables.bootstrap.css')
+    link(rel='stylesheet', href='/cab/static/plugins/pace/pace.min.css')
+    // Custom styles
+    link(rel='stylesheet', href='/cab/styles.css')
+    style.
+      body{
+      background: rgb(243, 243, 243);
+      }
+      }
+  body
+    .login-box
+      // /.login-logo
+      .login-box-body
+        // Здесь будет вывод сообщений
+        #result_div
+        .login-logo
+          img(src='application/logo-min.png')
+        p.login-box-msg Регистрация
+        center
+          form#form_id(name='send', action='', method='POST')
+            .form-group.has-feedback
+              input.form-control(type='text', name='name', placeholder='Ваше имя', required='')
+              span.glyphicon.glyphicon-pencil.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='text', name='surname', placeholder='Ваша фамилия', required='')
+              span.glyphicon.glyphicon-road.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='email', name='email', placeholder='Ваш Email', required='')
+              span.glyphicon.glyphicon-inbox.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='text', name='login', placeholder='Придумайте себе логин', required='')
+              span.glyphicon.glyphicon-user.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='password', name='password', placeholder='Придумайте пароль', required='')
+              span.glyphicon.glyphicon-lock.form-control-feedback
+            // /.col
+            | **Регистрируясь, вы согласны с правилами регистрации и использования проекта Науч.Круг
+            button.btn.btn-primary.btn-block.btn-flat(type='submit', name='regme', onclick="Send('form_id','result_div','_register.php'); return false;") Зарегистрироваться
+            // /.col
+          // /.social-auth-links
+          h4 Уже зарегистрированы?
+          a.text-center(href='login.php') Войдите
+      // /.login-box-body
+    // /.login-box
+    // jQuery 2.2.3
+    // Bootstrap 3.3.6
+    script(src='application/bootstrap/js/bootstrap.min.js')
