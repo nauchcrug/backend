@@ -1,28 +1,42 @@
 extends layout
 block content
+  -
+    const subjects = [{
+      short: "inf", name: "Информатика"
+    },{
+      short: "math", name: "Математика (профиль)"
+    },{
+      short: "rus", name: "Русский язык"
+    },{
+      short: "mathb", name: "Математика (база)"
+    },{
+      short: "lit", name: "Литература"
+    },{
+      short: "eng", name: "Английский язык"
+    },{
+      short: "obs", name: "Обществознание"
+    }]
+
   <div class="content-wrapper">
     <!-- Шапка страницы -->
     <section class="content-header">
       <h1>
-        Посмотреть задания из банка задач
-        <small>Выберите интересующий вас раздел</small>
+        | Посмотреть задания из банка задач
       </h1>
+      <br style="height:1px;">
+      <small>Выберите интересующий вас раздел: </small>
     </section>
 
     <!-- Секция контента -->
     <section class="content">
-          <form name="sender" method="POST">
-            <select class="form-control" name="main">
-              <option value="ex_inf">Информатика</option>
-              <option value="ex_math">Математика[Профиль]</option>
-              <option value="ex_rus">Русский язык</option>
-              <option value="ex_mathb">Математика [Базовая]</option>
-              <option value="ex_lit">Литература</option>
-              <option value="ex_eng">Английский язык</option>
-              <option value="ex_obs">Обществознание</option>
-           </select><br>
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Посмотреть" name="see">
-          </form>
+      <form name="sender" method="POST">
+        <select class="form-control" name="main">
+          each subj in subjects
+            <option value=`ex_${subj.short}`>#{subj.name}</option>
+        </select>
+        <br>
+        <input type="submit" class="btn btn-primary btn-block btn-flat" value="Посмотреть" name="see">
+      </form>
 
 
 
