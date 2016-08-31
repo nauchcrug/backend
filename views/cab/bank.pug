@@ -17,25 +17,29 @@ block content
       short: "obs", name: "Обществознание"
     }]
 
-  <div class="content-wrapper">
+  <div class="no-content-wrapper">
     <!-- Шапка страницы -->
     <section class="content-header">
       <h1>
         | Посмотреть задания из банка задач
       </h1>
-      <br style="height:1px;">
-      <small>Выберите интересующий вас раздел: </small>
     </section>
 
     <!-- Секция контента -->
     <section class="content">
       <form name="sender" method="POST">
-        <select class="form-control" name="main">
-          each subj in subjects
-            <option value=`ex_${subj.short}`>#{subj.name}</option>
-        </select>
-        <br>
-        <input type="submit" class="btn btn-primary btn-block btn-flat" value="Посмотреть" name="see">
+        <fieldset class="form-group" name="select">
+          <label>
+            <small>Выберите интересующий вас раздел: </small>
+          </label>
+          <select class="form-control" name="main">
+            each subj in subjects
+              <option value=`ex_${subj.short}`>#{subj.name}</option>
+          </select>
+        </fieldset>
+        <fieldset name="submit">
+          <input type="submit" class="btn btn-primary btn-block btn-flat" value="Посмотреть" name="see">
+        </fieldset>
       </form>
 
 
