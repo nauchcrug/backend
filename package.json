@@ -32,6 +32,7 @@
     "ajv": "^4.4.0",
     "app-module-path": "^1.1.0",
     "body-parser": "^1.15.2",
+    "co": "^4.6.0",
     "compression": "^1.6.2",
     "connect-redis": "^3.1.0",
     "express": "^5.0.0-alpha.2",

@@ -7,15 +7,16 @@ router.get('/', (req, res) => {
   res.render('site/allExams'); // List of subjects
 });
 
-router.get('/:subject', (req, res) => {
+router.get('/:subject', (req, res, next) => {
   const {subject} = req.params;
-  oldApi(subject, (obj, err) => {
-    if (err !== 200) throw obj;
-    else res.render('site/exam', {
+  oldApi(subject)
+  .then(obj => {
+    res.render('site/exam', {
       subject,
       tasks: obj
     });
-  });
+  })
+  .catch(err => next(err));
 });
 
 module.exports = router;
