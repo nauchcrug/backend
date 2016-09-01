@@ -14,6 +14,9 @@ block content
       fieldset.form-group: .input-group
         span.input-group-addon Изображение:
         input(required, name="image", type="file").form-control
+      fieldset.form-group: .input-group
+        span.input-group-addon Источник (необязательно):
+        input(required, name="source", type="text").form-control
       fieldset.form-group
         label: h4 Текст задания
         textarea(required, name="text").hidden#task-editor
