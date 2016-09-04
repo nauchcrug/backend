@@ -9,14 +9,12 @@ router.get('/logout', (req, res) => {
   res.redirect('/auth');
 });
 
-app.get('/callback',
-    passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
-    function(req, res) {
-        if (!req.user) {
-            throw new Error('user null');
-        }
-        res.redirect("/cab");
-    });
+router.get('/callback', passport.authenticate('auth0', {
+  failureRedirect: '/'
+}, (req, res) => {
+  const authorized = !!req.user;
+  res.redirect('/cab');
+}));
 
 //router.post('/register', register);
 module.exports = router;
