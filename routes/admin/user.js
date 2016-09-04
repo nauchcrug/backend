@@ -1,5 +1,6 @@
-const {Router} = require('express');
-const router = new Router;
+var express = require('express');
+var router = express.Router();
+require('../../lib/app');
 const requireAuth = require('../../lib/requireAuth');
 const passport = require('passport');
 
