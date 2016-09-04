@@ -3,13 +3,14 @@ const serve = require('serve-static');
 const router = new Router;
 const auth = require('../api/auth/index');
 const user = require('./user');
+const requireAuth = require('../../lib/requireAuth');
 //const register = require('./register');
 router.use('/static', [
   serve('node_modules/admin-lte'),
   serve('node_modules/tinymce')
 ]);
 
-router.get('/', (req, res) => res.render('cab/index'));
+router.get('/', requireAuth, (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
 router.get('/control', (req, res) => res.render('cab/controlteam'));
