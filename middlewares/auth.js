@@ -20,6 +20,8 @@ passport.deserializeUser((user, done) => done(null, user));
 router.use(session());
 router.use(passport.initialize());
 router.use(passport.session());
+
+
 module.exports = {
   auth: router,
   passport

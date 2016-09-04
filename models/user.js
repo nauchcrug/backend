@@ -34,5 +34,5 @@ exports.update = function (name,surname,email,about,school,home,subject){
 
 exports.register = function (username,surname,login,password,email){
     var sql = ('INSERT INTO users(username,surname,login,password,email) VALUES(username=\'%s\', surname=\'%s\', login=\'%s\', password=\'%s\', email=\'%s\'', username,surname,login,password,email);
-    
+
 }
