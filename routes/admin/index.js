@@ -4,7 +4,7 @@ const router = new Router;
 const auth = require('../api/auth/index');
 const user = require('./user');
 const requireAuth = require('../../lib/requireAuth');
-
+const {auth, passport} = require('middlewares/auth');
 //const register = require('./register');
 router.use('/static', [
   serve('node_modules/admin-lte'),
@@ -15,8 +15,10 @@ router.use('/static', [
 router.get('/', function(req,res){
     res.render('cab/index',{
         pageTitle: 'Личный кабинет - Науч.Круг',
-        fullname: req.user.name.givenName
+        fullname: 'Maxim'
     })
+
+    console.log(req.user.name.givenName);
 })
 router.get('/', requireAuth, (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));

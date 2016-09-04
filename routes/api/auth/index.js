@@ -9,7 +9,8 @@ router.get('/callback', passport.authenticate('auth0', {failureRedirect: '/'}),f
     if (!req.user) {
         throw new Error('user null');
     }else{
-    res.redirect('/cab');
+        console.log(req.user.name.givenName);
+        res.redirect('/cab');
     }
 });
 
