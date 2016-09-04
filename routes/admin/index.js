@@ -11,6 +11,13 @@ router.use('/static', [
   serve('node_modules/tinymce')
 ]);
 
+
+router.get('/', function(req,res){
+    res.render('cab/index',{
+        pageTitle: 'Личный кабинет - Науч.Круг',
+        fullname: req.user.name.givenName
+    })
+})
 router.get('/', requireAuth, (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
