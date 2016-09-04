@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const serve = require('serve-static');
 const router = new Router;
-
+const auth = require('../api/auth/index');
 const user = require('./user');
 //const register = require('./register');
 router.use('/static', [
@@ -17,5 +17,6 @@ router.get('/addpage', (req, res) => res.render('cab/addpage'));
 router.get('/addnews', (req, res) => res.render('cab/addnews'));
 router.get('/bank', (req, res) => res.render('cab/bank'));
 router.use('/user', user);
+router.use('/auth', auth);
 //router.use('/register',register);
 module.exports = router;
