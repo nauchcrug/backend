@@ -12,8 +12,10 @@ router.get('/logout', (req, res) => {
 router.get('/callback', passport.authenticate('auth0', {
   failureRedirect: '/'
 }, (req, res) => {
-  const authorized = !!req.user;
-  res.redirect('/cab');
+  res.render('cab/index',{
+        pageTitle: 'Главная',
+        fullname: req.user.name.givenName + ' ' + req.user.name.familyName
+  });
 }));
 
 //router.post('/register', register);
