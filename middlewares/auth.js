@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const passport = require('passport');
 const Auth0 = require('passport-auth0');
-const session = require('./session');
+//const session = require('./session');
 const router = new Router;
 
 const auth0 = new Auth0({
