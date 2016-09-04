@@ -4,6 +4,7 @@ const router = new Router;
 const auth = require('../api/auth/index');
 const user = require('./user');
 const requireAuth = require('../../lib/requireAuth');
+
 //const register = require('./register');
 router.use('/static', [
   serve('node_modules/admin-lte'),
