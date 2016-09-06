@@ -1,41 +1,40 @@
 doctype html
 html
-  title=title
-  head
-    // Tell the browser to be responsive to screen width
-    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
-    // Bootstrap 3.3.6
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    // Font Awesome
-    //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-    // Ionicons
-    //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
-    // Theme style
-    link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
-    //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
-    //link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-    // Ionicons
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
-    // Theme style
-    link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
-    //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
-    link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
-    //Глобальные стили
-    link(rel='stylesheet', href='/cab/styles.css')
+    title=title
+    head
+        // Tell the browser to be responsive to screen width
+        meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+        // Bootstrap 3.3.6
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+        // Font Awesome
+        //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+        // Ionicons
+        //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+        // Theme style
+        link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
+        //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
+        //link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+        // Ionicons
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+        // Theme style
+        link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
+        //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
+        link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
+        //Глобальные стили
+        link(rel='stylesheet', href='/cab/styles.css')
 
-    // jQuery 2.2.3
-    script(src='https://code.jquery.com/jquery-2.2.4.min.js')
-    // Bootstrap 3.3.6
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-    // SlimScrolls
-    script(src='/cab/static/plugins/slimScroll/jquery.slimscroll.min.js')
-    // FastClick
-    script(src='/cab/static/plugins/fastclick/fastclick.js')
-    // AdminLTE App
-    script(src='/cab/static/dist/js/app.min.js')
-
-  body.hold-transition.skin-blue.layout-top-nav
+        // jQuery 2.2.3
+        script(src='https://code.jquery.com/jquery-2.2.4.min.js')
+        // Bootstrap 3.3.6
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+        // SlimScrolls
+        script(src='/cab/static/plugins/slimScroll/jquery.slimscroll.min.js')
+        // FastClick
+        script(src='/cab/static/plugins/fastclick/fastclick.js')
+        // AdminLTE App
+        script(src='/cab/static/dist/js/app.min.js')
+    body.hold-transition.skin-green.layout-top-nav
         .wrapper
             header.main-header
                 nav.navbar.navbar-static-top
@@ -185,15 +184,5 @@ html
                                                 a.btn.btn-default.btn-flat(href='#') Profile
                                             .pull-right
                                                 a.btn.btn-default.btn-flat(href='#') Sign out
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
-                        br
+            .content-wrapper
+                block content
