@@ -1,183 +1,70 @@
-doctype html
-html
-    title=title
-    head
-        // Tell the browser to be responsive to screen width
-        meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
-        // Bootstrap 3.3.6
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-        // Font Awesome
-        //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-        // Ionicons
-        //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
-        // Theme style
-        link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
-        //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
-        //link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-        // Ionicons
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
-        // Theme style
-        link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
-        //link(rel='stylesheet', href='/cab/static/stylesheets/styles.css')
-        link(rel='stylesheet', href='/cab/static/dist/css/skins/_all-skins.min.css')
-        //Глобальные стили
-        link(rel='stylesheet', href='/cab/styles.css')
-
-        // jQuery 2.2.3
-        script(src='https://code.jquery.com/jquery-2.2.4.min.js')
-        // Bootstrap 3.3.6
-        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-        // SlimScrolls
-        script(src='/cab/static/plugins/slimScroll/jquery.slimscroll.min.js')
-        // FastClick
-        script(src='/cab/static/plugins/fastclick/fastclick.js')
-        // AdminLTE App
-        script(src='/cab/static/dist/js/app.min.js')
-
-    body.hold-transition.skin-blue.layout-top-nav
-        .wrapper
-            header.main-header
-                nav.navbar.navbar-static-top
-                    .container
-                        .navbar-header
-                            a.navbar-brand(href='../../index2.html')
-                                b Admin
-                                | LTE
-                            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse')
-                                i.fa.fa-bars
-                        #navbar-collapse.collapse.navbar-collapse.pull-left
-                            ul.nav.navbar-nav
-                                li.active
-                                    a(href='#')
-                                        | Link
-                                        span.sr-only (current)
-                                li
-                                    a(href='#') Link
-                                li.dropdown
-                                    a.dropdown-toggle(href='#', data-toggle='dropdown')
-                                        | Dropdown
-                                        span.caret
-                                    ul.dropdown-menu(role='menu')
-                                        li
-                                            a(href='#') Action
-                                        li
-                                            a(href='#') Another action
-                                        li
-                                            a(href='#') Something else here
-                                        li.divider
-                                        li
-                                            a(href='#') Separated link
-                                        li.divider
-                                        li
-                                            a(href='#') One more separated link
-                            form.navbar-form.navbar-left(role='search')
-                                .form-group
-                                    input#navbar-search-input.form-control(type='text', placeholder='Search')
-                        // /.navbar-collapse
-                        // Navbar Right Menu
-                        .navbar-custom-menu
-                            ul.nav.navbar-nav
-                                // User Account Menu
-                            li.dropdown.user.user-menu
-                                // Menu Toggle Button
-                                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                                    // The user image in the navbar
-                                    img.user-image(src='../../dist/img/user2-160x160.jpg', alt='User Image')
-                                    // hidden-xs hides the username on small devices so only the image appears.
-                                    span.hidden-xs Alexander Pierce
-                                ul.dropdown-menu
-                                    // The user image in the menu
-                                    li.user-header
-                                        img.img-circle(src='../../dist/img/user2-160x160.jpg', alt='User Image')
-                                        p
-                                            | Alexander Pierce - Web Developer
-                                            small Member since Nov. 2012
-                                    // Menu Body
-                                    li.user-body
-                                        .row
-                                            .col-xs-4.text-center
-                                                a(href='#') Followers
-                                            .col-xs-4.text-center
-                                                a(href='#') Sales
-                                            .col-xs-4.text-center
-                                                a(href='#') Friends
-                                        // /.row
-                                    // Menu Footer
-                                    li.user-footer
-                                        .pull-left
-                                            a.btn.btn-default.btn-flat(href='#') Profile
-                                        .pull-right
-                                            a.btn.btn-default.btn-flat(href='#') Sign out
-                        // /.navbar-custom-menu
-                    // /.container-fluid
-            // Full Width Column
-    .content-wrapper
-        .greenblock
+include layout.pug
+.content-wrapper
+    .greenblock
+        br
+        br
+        br
+        h1 Добро пожаловать на образовательный проект Науч.Круг!
+        br
+        | Для начала работы выберите область, которая вас интересует.
+        br
+        br
+        br
+        br
+        br
+    .whiteblock
+        center
+            h1.page-header Выберите предмет
             br
             br
-            br
-            h1 Добро пожаловать на образовательный проект Науч.Круг!
-            br
-            | Для начала работы выберите область, которая вас интересует.
-            br
-            br
-            br
-            br
-            br
-        .whiteblock
-            center
-                h1.page-header Выберите предмет
-                br
-                br
+            .row.placeholders
+                .col-xs-6.col-sm-3.placeholder
+                    a(href='#')
+                        img.img-responsive(src='images/inf.png', width='100', height='100')
+                    br
+                    |             Информатика
                 .row.placeholders
                     .col-xs-6.col-sm-3.placeholder
                         a(href='#')
-                            img.img-responsive(src='images/inf.png', width='100', height='100')
+                            img.img-responsive(src='images/math.png', width='100', height='100')
                         br
-                        |             Информатика
+                        |             Математика[профиль]
+                        br
                     .row.placeholders
                         .col-xs-6.col-sm-3.placeholder
                             a(href='#')
-                                img.img-responsive(src='images/math.png', width='100', height='100')
+                                img.img-responsive(src='images/rus.png', width='100', height='100')
                             br
-                            |             Математика[профиль]
+                            |             Русский язык
                             br
                         .row.placeholders
                             .col-xs-6.col-sm-3.placeholder
                                 a(href='#')
-                                    img.img-responsive(src='images/rus.png', width='100', height='100')
+                                    img.img-responsive(src='images/mathb.png', width='100', height='100')
                                 br
-                                |             Русский язык
+                                |             Математика[базовая]
                                 br
-                            .row.placeholders
-                                .col-xs-6.col-sm-3.placeholder
-                                    a(href='#')
-                                        img.img-responsive(src='images/mathb.png', width='100', height='100')
-                                    br
-                                    |             Математика[базовая]
-                                    br
 
-                                    br
-                            .blueblock
                                 br
+                        .blueblock
+                            br
+                            br
+                            br
+                            strong
+                                h1 Почему стоит заниматься на Науч.Круг?
                                 br
+                                img(src='images/comp.png', alt='Почему?')
+                            br
+                            br
+                            br
+                            br
+                            br
+                        .ligthblueblock
+                            br
+                            br
+                            br
+                            strong
+                                h1 Качественный банк заданий
                                 br
-                                strong
-                                    h1 Почему стоит заниматься на Науч.Круг?
-                                    br
-                                    img(src='images/comp.png', alt='Почему?')
+                                img(src='images/comp.png', alt='Почему?')
                                 br
-                                br
-                                br
-                                br
-                                br
-                            .ligthblueblock
-                                br
-                                br
-                                br
-                                strong
-                                    h1 Качественный банк заданий
-                                    br
-                                    img(src='images/comp.png', alt='Почему?')
-                                    br
