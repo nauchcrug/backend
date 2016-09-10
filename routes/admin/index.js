@@ -17,10 +17,8 @@ router.get('/', function(req,res){
         pageTitle: 'Личный кабинет - Науч.Круг',
         fullname: 'Maxim'
     })
-
-    console.log(req.user.name.givenName);
 })
-router.get('/', requireAuth, (req, res) => res.render('cab/index'));
+//router.get('/', (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
 router.get('/control', (req, res) => res.render('cab/controlteam'));
