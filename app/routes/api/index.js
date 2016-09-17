@@ -1,20 +1,18 @@
 const {Router} = require('express');
-const router = new Router;
-const {log} = require('lib/util');
+module.exports = router = new Router;
+const {log} = require('app/lib/util');
 
 // APIs
 const db = require('./db');
-const auth = require('./auth');
 const converter = require('./converter');
 const task = require('./task');
 
 // Endpoints
 router.use('/db', db);
-router.use('/auth', auth);
 router.use('/converter', converter);
 router.use('/task', task);
 
-!production ? router.use('/test', require('./test')) : void 0;
+if (!production) router.use('/test', require('./test'))
 
 /**
  * @api {get} / Hello, world!
@@ -44,4 +42,3 @@ router.post('/:id', function(req, res) {
   return res.json({id});
 });
 
-module.exports = router;

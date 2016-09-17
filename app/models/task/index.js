@@ -1,5 +1,5 @@
 const validate = require('./validate');
-const {db} = require('lib/db');
+const {db} = require('app/db');
 
 exports.add = (task) => {
   sql = '';

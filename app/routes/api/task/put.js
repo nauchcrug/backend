@@ -1,5 +1,5 @@
-const Task = require('models/task');
-const Image = require('models/image');
+const Task = require('app/models/task');
+const Image = require('app/models/image');
 
 function put(req, res) {
   const {id} = req.params;

@@ -1,12 +1,12 @@
 require('app-module-path').addPath(process.cwd());
-require('lib/sql').hook();
+require('app/lib/sql').hook();
 
-const {TARGET} = require('lib/util');
+const {TARGET} = require('app/lib/util');
 Object.keys(TARGET).forEach(key => global[key] = TARGET[key]);
 
 !global.production ? require('dotenv/config') : void 0;
 const {PORT, HOST, npm_lifecycle_event} = process.env;
-const app = require('lib/app');
+const app = require('app/');
 
 if (!global.test && !module.parent)
   app.listen(PORT, HOST, err => err

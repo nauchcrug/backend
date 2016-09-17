@@ -5,23 +5,21 @@ function NotFoundMiddleware(req, res, next) {
 }
 
 function errorHandlerMiddleware(err, req, res, next) {
-  console.log(err);
   res.status(err.status || 500);
+
   if (production) err.message = 'Произошла ошибка. Попробуйте вернуться на главную страницу';
   const {status, message} = err;
-  if (!test) console.error(err.stack);
+
+  //if (!test) console.error(err.stack);
+
   req.headers.accept === 'application/json'
     ? res.json({message, status})
     : res.render('error', {err});
+
   next(); // Last middleware, just for fun :-)
 }
 
-function errorMiddlewareFactory() {
-  return [
-    NotFoundMiddleware,
-    errorHandlerMiddleware
-  ];
-}
-
-module.exports = errorMiddlewareFactory;
+module.exports = app => app
+  .use(NotFoundMiddleware)
+  .use(errorHandlerMiddleware)
 

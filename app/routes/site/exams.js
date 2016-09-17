@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const router = new Router;
 //Exam = require('models/exam');
-const oldApi = require('lib/oldApi');
+const oldApi = require('app/lib/oldApi');
 
 router.get('/', (req, res) => {
   res.render('site/allExams'); // List of subjects

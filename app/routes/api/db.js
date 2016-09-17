@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = new Router;
-const {db} = require('lib/db');
+const {db} = require('app/db');
 
 const sql = 'select * from information_schema.tables';
 

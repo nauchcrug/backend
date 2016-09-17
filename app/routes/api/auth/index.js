@@ -2,7 +2,6 @@ const {Router} = require('express');
 const router = new Router;
 const {auth, passport} = require('middlewares/auth');
 
-
 router.use(auth);
 
 router.get('/callback', passport.authenticate('auth0', {failureRedirect: '/'}),function (req,res) {

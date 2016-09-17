@@ -32,7 +32,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "routes/api/converter/index.js",
+    "filename": "app/routes/api/converter/index.js",
     "groupTitle": "Subject"
   },
   {
@@ -68,7 +68,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "routes/api/index.js",
+    "filename": "app/routes/api/index.js",
     "groupTitle": "root"
   },
   {
@@ -91,7 +91,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "routes/api/index.js",
+    "filename": "app/routes/api/index.js",
     "groupTitle": "root"
   }
 ]

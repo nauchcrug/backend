@@ -9,14 +9,14 @@
   "scripts": {
     "start": "nodemon -e 'js json'",
     "lint": "eslint .",
-    "migrate": "node lib/migrate",
+    "migrate": "node app/migrate",
     "deploy": "git push github master",
     "test": "mocha -r ./index.js -u bdd --recursive -G",
     "test:watch": "npm --silent run test -- -w",
     "doc": "npm --silent run doc:code && npm --silent run doc:api",
     "doc:code": "jsdoc",
-    "doc:api": "apidoc -i ./routes/ -o doc/api --markdown true",
-    "tree": "tree -h -I node_modules |less"
+    "doc:api": "apidoc -i ./app/routes/ -o doc/api --markdown true",
+    "tree": "tree -h -I app |less"
   },
   "keywords": [
     "express"
@@ -35,6 +35,7 @@
     "co": "^4.6.0",
     "compression": "^1.6.2",
     "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
     "express": "^5.0.0-alpha.2",
     "express-jwt": "^3.4.0",
     "express-session": "^1.14.0",
@@ -51,8 +52,7 @@
     "pg-promise": "^5.2.7",
     "pug": "^2.0.0-beta4",
     "serve-static": "^1.11.1",
-    "tinymce": "^4.4.1",
-    "cookie-parser": "~1.4.1"
+    "tinymce": "^4.4.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

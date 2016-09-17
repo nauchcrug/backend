@@ -4,8 +4,4 @@ function httpsMiddleware(req, res, next) {
     : next();
 }
 
-function httpsMiddlewareFactory() {
-  return httpsMiddleware;
-}
-
-module.exports = httpsMiddlewareFactory;
+module.exports = app => app.use(httpsMiddleware)

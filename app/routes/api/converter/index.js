@@ -1,7 +1,7 @@
 const {Router} = require('express');
-const router = new Router;
+module.exports = router = new Router;
 const fetch = require('node-fetch');
-const oldApi = require('lib/oldApi');
+const oldApi = require('app/lib/oldApi');
 
 router.get('/page/:subject', (req, res) => {
   const {subject} = req.params;
@@ -35,4 +35,3 @@ router.get('/:subject', (req, res) => {
   });
 });
 
-module.exports = router;
