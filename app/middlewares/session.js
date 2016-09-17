@@ -14,4 +14,4 @@ const sessionMiddleware = session({
 });
 
 module.exports = app => app
-  .use(sessionMiddleware())
+  .use(sessionMiddleware)

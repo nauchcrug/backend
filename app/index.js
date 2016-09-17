@@ -28,8 +28,8 @@ if (!production) {
 } else {
   /* Redirect to https */
   https(app);
-  session(app);
 }
+
 
 // Apply middlewares
 app.use([
@@ -41,7 +41,7 @@ app.use([
   express.static('public')
 ]);
 
-
+session(app);
 routes(app); /* Apply endpoints */
 errors(app); /* Apply error handler */
 
