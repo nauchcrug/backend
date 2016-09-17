@@ -1,13 +1,13 @@
 const express = require('express');
-
-// Middlewares
 const compression = require('compression');
 const helmet = require('helmet');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
+
+// Middlewares
 const session = require('app/middlewares/session');
 const https = require('app/middlewares/https');
-const errors = require('app/middlewares/error');
+const error = require('app/middlewares/error');
 const routes = require('app/routes');
 
 const app = express()
@@ -43,7 +43,7 @@ app.use([
 
 session(app);
 routes(app); /* Apply endpoints */
-errors(app); /* Apply error handler */
+error(app); /* Apply error handler */
 
 module.exports = app;
 
