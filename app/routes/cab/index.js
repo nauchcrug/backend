@@ -10,13 +10,7 @@ router.use('/static', [
 ]);
 
 
-router.get('/', function(req,res){
-    res.render('cab/index',{
-        pageTitle: 'Личный кабинет - Науч.Круг',
-        fullname: 'Maxim'
-    })
-})
-
+router.get('/', (req, res) => res.render('cab/index'));
 router.get('/add', (req, res) => res.render('cab/add'));
 router.get('/table', (req, res) => res.render('cab/table'));
 router.get('/control', (req, res) => res.render('cab/controlteam'));
