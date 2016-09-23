@@ -1,6 +1,8 @@
-require('app-module-path').addPath(__dirname);
+require('app-module-path/cwd') /*.addPath(__dirname);*/
 require('isomorphic-fetch');
 const config = require('app/config');
+const xor = (a, b) => a ? !b : b
+
 const {
   PORT = config.port,
   HOST = config.host,
@@ -10,41 +12,37 @@ const {
 } = process.env;
 
 global.__DEV__ = (NODE_ENV != 'production');
-global.__TEST__ = (
-  (a, b) => (a ? !b : b)
-)(
-  /test/.test(npm_lifecycle_event,
+global.__TEST__ = xor(
+  /test/.test(npm_lifecycle_event),
   NODE_ENV == 'test'
-));
+);
+global.__PROD__ = !__DEV__ && !__TEST__
 
-if (!global.production) {
+if (__DEV__) {
   require('dotenv/config');
 }
 
-const app = require('app/index');
-const domain = require('domain');
-let d = domain.create();
-d.on('error', err => {
-  console.error("Catched error in domain: %s", err.message);
-});
+module.exports = app = require('app/index');
 
-/* TODO: Better app logging
-const logger = riequire('app/logger');
-*/
-
-if (!global.test && !module.parent) {
-  const http = require('http');
-
-  //d.add(app);
-  d.run(() => {
-    const server = http.createServer(app);
-    server.listen(PORT, HOST, err => {
-      if (err) d.emit('error', err);
-      console.log(`Express listening on ${HOST}:${PORT}`);
+if (/migrate/.test(process.argv[2])) {
+    require('app/migrate')({
+        name: process.argv[3],
+        verbose: true
     });
-  });
-} else {
+} else if (!__TEST__ && !module.parent) {
+    const http = require('http');
+    const domain = require('domain');
+
+    const d = domain.create();
+    d.on('error', err => {
+        console.error("Catched error in domain: %s", err.message);
+    });
+
+    d.run(() => {
+        const server = http.createServer(app);
+        server.listen(PORT, HOST, err => {
+            if (err) d.emit('error', err);
+            console.log(`Express listening on ${HOST}:${PORT}`);
+        });
+    });
 }
-
-module.exports = app;
-

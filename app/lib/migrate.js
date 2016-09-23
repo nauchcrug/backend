@@ -1,7 +1,7 @@
 require('./globalize');
 const fs = require('fs');
 //const {resolve} = require('path');
-const {db} = require(lib + 'db');
+const db = require('app/db');
 
 function query(sql) {
     return db.query(sql).then(function(data) {

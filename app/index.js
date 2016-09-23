@@ -12,10 +12,9 @@ const error = require('app/middlewares/error');
 const routes = require('app/routes');
 
 const app = express();
-
-// Views
 app.set('views', 'app/views');
 app.set('view engine', 'pug');
+app.set('env', process.env.NODE_ENV || '');
 
 /* TODO: Database in req object
 app.use((req, res, next) => {
@@ -24,22 +23,16 @@ app.use((req, res, next) => {
 */
 
 if (__DEV__) {
-
     if (!__TEST__) {
-
-    /* Log requests */
-        const logger = require('app/middlewares/logger');
-        logger(app);
+        const logger = require('morgan')('dev');
+        app.use(logger);
     }
-
 } else {
-
     /*app.disable('x-powered-by');*/
     app.set('view cache');
 
     /* Redirect to https */
     https(app);
-
 }
 
 

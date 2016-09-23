@@ -8,14 +8,14 @@ html
     .page-wrap
       .message-wrap
         img(src='/images/email.png')
-        .message= err.status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
+        .message= status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
         .description.
           Вы можете попробовать вернуться на главную страницу, там много полезной информации =)
 
     if __DEV__
       .stack-wrap
         hr.dotted(style="opacity:0;")
-        pre.stack= err.stack
+        pre.stack= stack
 
     style: include:clean-css assets/error.css
     if __DEV__
