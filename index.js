@@ -1,7 +1,6 @@
 require('app-module-path/cwd') /*.addPath(__dirname);*/
 require('isomorphic-fetch');
 const config = require('app/config');
-const xor = (a, b) => a ? !b : b
 
 const {
   PORT = config.port,
@@ -11,8 +10,9 @@ const {
   npm_lifecycle_event = ''
 } = process.env;
 
+global.XOR = (a, b) => a ? !b : b;
 global.__DEV__ = (NODE_ENV != 'production');
-global.__TEST__ = xor(
+global.__TEST__ = XOR(
   /test/.test(npm_lifecycle_event),
   NODE_ENV == 'test'
 );
