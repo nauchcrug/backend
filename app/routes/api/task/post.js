@@ -2,8 +2,8 @@ const Task = require('app/models/task');
 const Image = require('app/models/image');
 
 function post(req, res) {
-  const {body, file} = req;
-  console.log(' body = ', body, '\r\n', 'file = ', file);
+    const {body, file} = req;
+    console.log(' body = ', body, '\r\n', 'file = ', file);
   /*Image.add(file)
     .then(*/
   /*Task.add(body)
@@ -15,7 +15,7 @@ function post(req, res) {
 <<<<<<< HEAD
     .catch(err => res.status(500).json({message: err.message}));
     .catch(err => {throw err});*/
-  throw new Error('Not implemented');
+    throw new Error('Not implemented');
 }
 
 module.exports = post;

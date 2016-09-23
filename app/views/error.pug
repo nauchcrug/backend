@@ -7,38 +7,37 @@ html
   body
     .page-wrap
       .message-wrap
-        //.message= err.message
         img(src='/images/email.png')
         .message= err.status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
         .description.
           Вы можете попробовать вернуться на главную страницу, там много полезной информации =)
-    if !production
+
+    if __DEV__
       .stack-wrap
         hr.dotted(style="opacity:0;")
         pre.stack= err.stack
+
     style: include:clean-css assets/error.css
-    if !production
-      style
-        :clean-css.
-          @media (max-height: 600px) {
-            img {
-              opacity: 0;
-              visibility: hidden;
-            }
+    if __DEV__
+      style: clean-css.
+        @media (max-height: 600px) {
+          img {
+           opacity: 0;
+           visibility: hidden;
           }
-          @media (max-width: 700px) {
-            img {
-              opacity: 0;
-              visibility: hidden;
-            }
-            .message-wrap {
-              font-size: 9px;
-            }
+        }
+        @media (max-width: 700px) {
+          img {
+            opacity: 0;
+            visibility: hidden;
           }
+          .message-wrap {
+            font-size: 9px;
+          }
+        }
     else
-      style
-        :clean-css.
-            .stack-wrap {
-              visibility: hidden;
-              display: none;
-            }
+      style: clean-css.
+        .stack-wrap {
+          visibility: hidden;
+          display: none;
+        }

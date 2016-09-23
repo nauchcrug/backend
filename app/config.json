@@ -1,0 +1,5 @@
+{
+  "port": 3000,
+  "host": "localhost",
+  "scale": 1
+}

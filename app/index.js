@@ -5,45 +5,60 @@ const body = require('body-parser');
 const cookie = require('cookie-parser');
 
 // Middlewares
+const serve = require('app/middlewares/static');
 const session = require('app/middlewares/session');
 const https = require('app/middlewares/https');
 const error = require('app/middlewares/error');
 const routes = require('app/routes');
 
-const app = express()
-//app.disable('x-powered-by');
+const app = express();
+
 // Views
 app.set('views', 'app/views');
 app.set('view engine', 'pug');
-app.set('view cache');
 
-if (!production) {
+/* TODO: Database in req object
+app.use((req, res, next) => {
+  req.db = db;
+});
+*/
 
-  if (!test) {
+if (__DEV__) {
+
+    if (!__TEST__) {
+
     /* Log requests */
-    const logger = require('app/middlewares/logger');
-    logger(app);
-  }
+        const logger = require('app/middlewares/logger');
+        logger(app);
+    }
 
 } else {
-  /* Redirect to https */
-  https(app);
+
+    /*app.disable('x-powered-by');*/
+    app.set('view cache');
+
+    /* Redirect to https */
+    https(app);
+
 }
 
 
 // Apply middlewares
-app.use([
-  helmet(),
-  cookie(),
-  compression(),
-  body.json(),
-  body.urlencoded({extended: false}),
-  express.static('public')
-]);
+app
+    .use(helmet()) /* Security */
+    .use(cookie()) /* cookie-parser */
+    .use(body.json())
+    .use(body.urlencoded({
+        extended: false
+    }))
+    .use(compression())
+    .use(serve('static', {
+        maxAge: '365d'
+    }))
 
-session(app);
-routes(app); /* Apply endpoints */
-error(app); /* Apply error handler */
+session(app); /* Session middleware */
+routes(app); /* App routes */
+error(app); /* Error handler */
 
 module.exports = app;
 

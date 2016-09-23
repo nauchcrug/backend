@@ -181,6 +181,8 @@ html
     //script(defer, src='/cab/static/plugins/datatables/dataTables.bootstrap.min.js')
     //script(defer, src='/cab/static/plugins/slimScroll/jquery.slimscroll.min.js')
     script(async, src='/cab/static/plugins/pace/pace.min.js')
-    script(async)
-      include ../assets/cab.js
+    script(async).
+      window.addEventListener('DOMContentLoaded', ev => {
+        if (window.Pace) window.Pace.restart();
+      });
     block script

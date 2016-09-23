@@ -7,4 +7,4 @@ var router = express.Router();
 
 //Сразу подключим модель User
 
-var user = require('../')
+var user = require('../');
