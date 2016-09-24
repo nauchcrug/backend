@@ -28,12 +28,11 @@ function NotFoundMiddleware(req, res, next) {
 function errorHandlerMiddleware(err, req, res, next) {
     res.status(err.status || 500);
 
-    if (!__DEV__) {
+    if (__PROD__) {
         err.message = 'Произошла ошибка. Попробуйте вернуться на главную страницу';
     }
 
-    /* TODO: Fancy logging */
-    if (!__TEST__) {
+    if (__DEV__) {
         console.error(chalk.underline.bold.red(err.message));
     }
 

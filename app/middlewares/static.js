@@ -11,6 +11,5 @@ const defaultOpts = {
 
 module.exports = (path, opts) => {
     const mergedOpts = assign(defaultOpts, opts);
-
     return serve(path, mergedOpts)
 }
