@@ -6,17 +6,17 @@ const cookie = require('cookie-parser');
 
 // Middlewares
 const serve = require('app/middlewares/static');
-const session = require('app/middlewares/session');
 const https = require('app/middlewares/https');
 const error = require('app/middlewares/error');
 const routes = require('app/routes');
+const passport = require('app/passport');
 
 const app = express();
 app.set('views', 'app/views');
 app.set('view engine', 'pug');
 app.set('env', process.env.NODE_ENV || '');
 
-/* TODO: Database in req object
+/* TODO: Database in req object?
 app.use((req, res, next) => {
   req.db = db;
 });
@@ -49,7 +49,7 @@ app
         maxAge: '365d'
     }))
 
-session(app); /* Session middleware */
+passport(app);
 routes(app); /* App routes */
 error(app); /* Error handler */
 
