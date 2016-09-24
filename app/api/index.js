@@ -7,28 +7,38 @@ const router = new Router({
 const task = require('./task');
 const subject = require('./subject');
 
-module.exports = router
-    .use(configureApi)
-    .use('/test', test)
-    .use('/task', task)
-    .use('/subject', subject)
-    .use(notImplemented);
-
-function test(req, res) {
-    const err = new Error('test');
-    err.status = 500;
-    throw err;
+if (__DEV__) {
+    router.all('/test', (req, res) => {
+        const err = new Error('test');
+        err.status = 500;
+        throw err;
+    });
 }
 
-function configureApi(req, res, next) {
-    /*res.type('json');*/
-    next();
+module.exports = router
+    .all('/', root)
+    .use('/task', task)
+    .use('/subject', subject)
+    .use(notImplemented)
+    .use(errorHandler)
+
+function root(req, res) {
+    res.json({
+        msg: 'Welcome!'
+    })
 }
 
 function notImplemented(req, res, next) {
-    const err = new NotImplementedError(req);
+    //const err = new NotImplementedError(req);
+    const err = new Error('Not implemented');
+    err.name = 'NotImplementedError';
+    err.message = 'Not implemented';
+    err.stack = req.path || 'unknown path';
+    err.status = 501;
     next(err);
 }
 
-
+function errorHandler(err, req, res, next) {
+    res.status(err.status || 500).json(err);
+}
 

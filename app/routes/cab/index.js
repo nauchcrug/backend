@@ -1,13 +1,17 @@
 const {Router} = require('express');
-const serve = require('app/middlewares/static');
+const serve = require('serve-static');
 
 const user = require('./user');
 
 module.exports = router = new Router;
 
 router.use('/static',
-    serve('node_modules/admin-lte'),
-    serve('node_modules/tinymce')
+    serve('node_modules/admin-lte', {
+        maxAge: '365d'
+    }),
+    serve('node_modules/tinymce', {
+        maxAge: '365'
+    })
 );
 
 router

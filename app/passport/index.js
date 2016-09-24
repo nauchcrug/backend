@@ -1,18 +1,17 @@
 const passport = require('passport');
-const session = require('./session');
 const Auth0Strategy = require('./auth0strategy');
 
-passport.serializeUser((user, done) => {
-    done(null, user);
+/*
+    SETUP PASSPORT
+*/
+
+passport.serializeUser((id, done) => {
+    done(null, id);
 });
-passport.deserializeUser((user, done) => {
-    done(null, user);
+passport.deserializeUser((id, done) => {
+    done(null, id);
 });
 
 Auth0Strategy(passport);
 
 module.exports = passport;
-/*  .use(session)
-    .use(passport.initialize())
-    .use(passport.session())
-*/

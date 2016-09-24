@@ -1,18 +1,20 @@
 const {Router} = require('express');
-const router = new Router;
+const {HttpError} = require('app/util/errors');
+module.exports = router = new Router;
 
-function get(req, res, next) {
+function get(req, res) {
     res.json({
         taskId: req.taskId
     });
 }
 
 
-router.param('id', (req, res, next, name, value) => {
-    req.taskId = name;
+router.param('taskId', (req, res, next, taskId) => {
+    if (!isNaN(taskId))
+        return next(new HttpError(500, 'Must be a string'));
+    req.taskId = taskId;
+    next();
 });
 
-router.route('/:id')
+router.route('/:taskId')
   .get(get);
-
-module.exports = router;

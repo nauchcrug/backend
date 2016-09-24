@@ -4,11 +4,11 @@ const compression = require('compression');
 const helmet = require('helmet');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 // Middlewares
-const serve = require('app/middlewares/static');
 const error = require('app/middlewares/error');
-const session = require('app/passport/session');
 const passport = require('app/passport');
 const routes = require('app/routes');
 const api = require('app/api');
@@ -49,17 +49,23 @@ app
     .use(cookie()) /* cookie-parser */
     .use(body.json())
     .use(body.urlencoded({extended: false}))
-    .use(session)
+    .use(session({
+        secret: process.env.AUTH0_CLIENT_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        store: new RedisStore({
+            url: process.env.REDIS_URL
+        })
+    }))
     .use(passport.initialize())
     .use(passport.session())
     .use(compression())
-    .use(serve('static', {
+    .use(express.static('static', {
         maxAge: '365d'
     }));
 
 app.use('/api', api); /* API */
 routes(app); /* App routes */
-error(app); /* Error handler */
 
 module.exports = app;
 
