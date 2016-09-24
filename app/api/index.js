@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {HttpError, NotImplementedError} = require('app/util/errors');
+const {HttpError} = require('app/lib/errors');
 const router = new Router({
     mergeParams: true
 });

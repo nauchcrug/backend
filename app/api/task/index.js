@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {HttpError} = require('app/util/errors');
+const {HttpError} = require('app/lib/errors');
 module.exports = router = new Router;
 
 function get(req, res) {

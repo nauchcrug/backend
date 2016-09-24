@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const {HttpError} = require('app/util/errors');
+const {HttpError} = require('app/lib/errors');
 const site = require('app/routes/site');
 const cab = require('app/routes/cab');
 
