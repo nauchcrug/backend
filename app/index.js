@@ -7,8 +7,6 @@ const cookie = require('cookie-parser');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
-// Middlewares
-const error = require('app/middlewares/error');
 const passport = require('app/passport');
 const routes = require('app/routes');
 const api = require('app/api');
@@ -62,7 +60,7 @@ app
     .use(compression())
     .use(express.static('static', {
         maxAge: '365d'
-    }));
+    }))
 
 app.use('/api', api); /* API */
 routes(app); /* App routes */

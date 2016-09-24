@@ -1,14 +1,15 @@
 const chalk = require('chalk');
+
 const {HttpError} = require('app/util/errors');
 const site = require('app/routes/site');
 const cab = require('app/routes/cab');
 
 /* Apply endpoints */
 module.exports = app => app
-  .use('/', site)
-  .use('/cab', cab)
-  .use(NotFoundMiddleware)
-  .use(errorHandler)
+    .use('/', site)
+    .use('/cab', cab)
+    .use(NotFoundMiddleware)
+    .use(errorHandler)
 
 function NotFoundMiddleware(req, res, next) {
     let err = new HttpError(404, 'Страница не найдена');

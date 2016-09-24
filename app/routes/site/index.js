@@ -1,15 +1,11 @@
 const {Router} = require('express');
-const router = new Router;
+module.exports = router = new Router;
 const exams = require('./exams');
 
-router.get('/', (req, res) => {
-    res.render('site/index');
-});
-
-router.get('/test_error', (req, res) => {
-    throw new Error('test');
-});
+router.get('/', createRender('site/index'));
 
 router.use('/exam', exams);
-module.exports = router;
 
+function createRender(tpl) {
+    return (_, res) => res.render(tpl);
+}
