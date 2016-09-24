@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {HttpError} = require('app/util/errors');
+const {HttpError, NotImplementedError} = require('app/util/errors');
 const router = new Router({
     mergeParams: true
 });
@@ -15,6 +15,9 @@ module.exports = router
     .use(notImplemented);
 
 function test(req, res) {
+    const err = new Error('test');
+    err.status = 500;
+    throw err;
 }
 
 function configureApi(req, res, next) {
@@ -23,9 +26,7 @@ function configureApi(req, res, next) {
 }
 
 function notImplemented(req, res, next) {
-    const err = new Error('Not implemented');
-    err.stack = req.path;
-    err.status = 500;
+    const err = new NotImplementedError(req);
     next(err);
 }
 

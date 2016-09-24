@@ -8,7 +8,10 @@ html
     .page-wrap
       .message-wrap
         img(src='/images/email.png')
-        .message= err.status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
+        if __DEV__
+          .message= err.message
+        else
+          .message= err.status === 404 ? 'Страница не найдена' : 'Произошла ошибка'
         .description.
           Вы можете попробовать вернуться на главную страницу, там много полезной информации =)
 
@@ -19,7 +22,16 @@ html
 
     style: include:clean-css assets/error.css
     if __DEV__
-      style: clean-css.
+      style: :clean-css
+        .stack {
+          font-size: 1.25em;
+          line-height: 1.2em;
+          color: #fec;
+        }
+        .message {
+          color: DarkRed;
+          text-decoration: underline;
+        }
         @media (max-height: 600px) {
           img {
            opacity: 0;
@@ -36,7 +48,7 @@ html
           }
         }
     else
-      style: clean-css.
+      style: :clean-css
         .stack-wrap {
           visibility: hidden;
           display: none;

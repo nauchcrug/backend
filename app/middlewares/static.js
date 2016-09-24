@@ -3,7 +3,6 @@ const {assign} = require('lodash');
 
 const defaultOpts = {
     maxAge: '365d',
-
     setHeaders(res, path, stat) {
        /*res.setHeader();*/
     }

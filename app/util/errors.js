@@ -1,5 +1,13 @@
 module.exports = {
-    HttpError
+    HttpError, NotImplementedError
+}
+
+function NotImplementedError(req) {
+    Error.apply(this);
+    this.name = 'NotImplementedError';
+    this.message = 'Not implemented';
+    this.stack = req.path || 'unknow path';
+    this.status = 500;
 }
 
 function HttpError(status, message) {
