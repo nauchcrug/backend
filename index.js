@@ -16,7 +16,7 @@ global.__TEST__ = XOR(
   /test/.test(npm_lifecycle_event),
   NODE_ENV == 'test'
 );
-global.__PROD__ = !__DEV__ && !__TEST__
+global.__PROD__ = !XOR(__DEV__, __TEST__)
 
 if (__DEV__) {
   require('dotenv/config');

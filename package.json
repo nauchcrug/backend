@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "nodemon --watch app -e 'js json'",
+    "start:prod": "cross-env HTTPS=0 NODE_ENV=production node -r dotenv/config index",
     "lint": "eslint app",
     "migrate": "node index migrate",
     "deploy": "git push github master",
@@ -36,6 +37,7 @@
     "chalk": "^1.1.3",
     "compression": "^1.6.2",
     "connect-redis": "^3.1.0",
+    "connect-timeout": "^1.7.0",
     "cookie-parser": "^1.4.3",
     "express": ">4",
     "express-session": "^1.14.0",
@@ -52,11 +54,12 @@
     "tinymce": "^4.4.1"
   },
   "devDependencies": {
-    "morgan": "^1.7.0",
     "chai": "^3.5.0",
+    "cross-env": "^3.0.0",
     "dotenv": "^2.0.0",
     "eslint": "^3.2.2",
     "mocha": "^3.0.1",
+    "morgan": "^1.7.0",
     "nodemon": "^1.10.0",
     "pg-monitor": "^0.5.11",
     "supertest": "^2.0.0"

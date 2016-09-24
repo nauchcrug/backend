@@ -1,5 +1,5 @@
+const Model = require('app/models/base');
 const validate = require('./validate');
-const {db} = require('app/db');
 
 exports.add = (task) => {
     sql = '';
@@ -12,3 +12,19 @@ exports.approve = (id, approved) => {
     const bit = approved ? 1 : 0;
     return db.query(sql, [id, bit]);
 };
+
+module.exports = class Task extends Model {
+    constructor(data) {
+        super(data);
+    }
+
+    create(data) {
+        this.validate;
+    }
+
+    approve(id, approved) {
+        return this.db.query(sql, {id, bit});
+    }
+};
+
+Task.tableName = 'task';

@@ -7,9 +7,9 @@ const defaultOpts = {
     setHeaders(res, path, stat) {
        /*res.setHeader();*/
     }
-}
+};
 
 module.exports = (path, opts) => {
     const mergedOpts = assign(defaultOpts, opts);
-    return serve(path, mergedOpts)
-}
+    return serve(path, mergedOpts);
+};

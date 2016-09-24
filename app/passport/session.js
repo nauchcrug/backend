@@ -13,4 +13,4 @@ const sessionMiddleware = session({
     saveUninitialized: false
 });
 
-module.exports = sessionMiddleware
+module.exports = sessionMiddleware;

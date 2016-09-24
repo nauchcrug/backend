@@ -22,7 +22,7 @@ module.exports = opts => migrate.bind({
                 ? name + '.sql'
                 : this.sql(name)
                     ? this.base + name
-                    : this.base + name + '.sql'
+                    : this.base + name + '.sql';
     }
 })(opts);
 
@@ -44,7 +44,7 @@ function migrate(opts) {
 
     db.none(sql)
         .then(data => {
-            console.log(chalk.cyan(`Result ${data}`))
+            console.log(chalk.cyan(`Result ${data}`));
         })
         .catch(err => {
             console.error(verbose

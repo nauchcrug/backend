@@ -9,12 +9,5 @@ const auth0 = new Auth0({
     return done(null, profile);
 });
 
-const serializeUser = (user, done) => done(null, user);
-const deserializeUser = (user, done) => done(null, user);
-
-module.exports = p => {
-    p.serializeUser(serializeUser)
-    p.deserializeUser(deserializeUser)
-    return p
-        .use(auth0)
-}
+module.exports = passport => passport
+    .use(auth0)

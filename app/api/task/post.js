@@ -14,8 +14,8 @@ function post(req, res) {
     }))
 <<<<<<< HEAD
     .catch(err => res.status(500).json({message: err.message}));
-    .catch(err => {throw err});*/
     throw new Error('Not implemented');
+    */
 }
 
 module.exports = post;

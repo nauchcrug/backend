@@ -13,6 +13,6 @@ router.param('id', (req, res, next, name, value) => {
 });
 
 router.route('/:id')
-  .get(get)
+  .get(get);
 
 module.exports = router;

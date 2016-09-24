@@ -18,4 +18,4 @@ router
     .get('/addpage', (req, res) => res.render('cab/addpage'))
     .get('/addnews', (req, res) => res.render('cab/addnews'))
     .get('/bank', (req, res) => res.render('cab/bank'))
-    .use('/user', user)
+    .use('/user', user);
