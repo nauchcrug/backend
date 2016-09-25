@@ -30,11 +30,10 @@ function root(req, res) {
 
 function notImplemented(req, res, next) {
     //const err = new NotImplementedError(req);
-    const err = new Error('Not implemented');
+    const err = new HttpError(501, 'Not implemented');
     err.name = 'NotImplementedError';
     err.message = 'Not implemented';
     err.stack = req.path || 'unknown path';
-    err.status = 501;
     next(err);
 }
 
