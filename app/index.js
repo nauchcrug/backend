@@ -7,6 +7,7 @@ const cookie = require('cookie-parser');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
+const redirects = require('app/routes/redirects');
 const passport = require('app/passport');
 const routes = require('app/routes');
 const api = require('app/api');
@@ -21,6 +22,8 @@ app.use((req, res, next) => {
   req.db = db;
 });
 */
+
+redirects(app);
 
 if (__DEV__) {
     if (!__TEST__) {
