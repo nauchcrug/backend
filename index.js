@@ -8,7 +8,6 @@ if (process.env.NODE_ENV != 'production') {
 
 const {
   PORT = config.port,
-  HOST = config.host,
   SCALE = config.scale,
   DATABASE_URL = config.database_url,
   NODE_ENV = '',
@@ -18,6 +17,8 @@ const {
 global.__DEV__ = (NODE_ENV != 'production');
 global.__TEST__ = /test/.test(npm_lifecycle_event);
 global.__PROD__ = !(__DEV__ ? !__TEST__ : __TEST__);
+
+const HOST = __DEV__ ? config.host : undefined;
 
 module.exports = app = require('app');
 global.__APP__ = app;
