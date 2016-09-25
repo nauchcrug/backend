@@ -1,21 +1,14 @@
-const app = require('test/..');
-const _ = require('lodash');
 const {expect} = require('chai');
-const request = require('supertest');
-
-const agent = request.agent(app);
+const agent = require('test/agent');
 
 describe('API', () => {
-    describe('POST /api/:id', () => _.times(3, i => it(
-        `Returns \"${i}\"`,
-        done => agent
-            .post('/api/' + i)
-            .expect(res => {
-                const {id} = res.body;
-                expect(id).to.be.a('string');
-                expect(id).to.equal(`${i}`);
-            })
-            .end(err => done(err))
-        )
-    ));
+    it(`JSON error (/api/error)`, done => agent
+        .get('/api/')
+        .expect(({body}) => {
+            expect(body).to.be.an('object');
+            expect(body.msg).to.be.ok;
+            expect(body.msg).to.equal('Welcome!');
+        })
+        .end(done)
+    )
 });
