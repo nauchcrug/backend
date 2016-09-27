@@ -1,6 +1,16 @@
+const validate = require('app/lib/validate');
 const Model = require('app/models/base');
-const validate = require('./validate');
+module.exports = new Task;
 
+module.exports = class Task extends Model {
+    static tableName = 'task'
+
+    constructor(data) {
+        super(data);
+    }
+}
+
+/*
 exports.add = (task) => {
     sql = '';
     return validate(task); // Promise
@@ -28,3 +38,4 @@ module.exports = class Task extends Model {
 };
 
 Task.tableName = 'task';
+*/

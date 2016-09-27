@@ -3,11 +3,13 @@ const chalk = require('chalk');
 const {HttpError} = require('app/lib/errors');
 const site = require('app/routes/site');
 const cab = require('app/routes/cab');
+const auth = require('app/routes/auth');
 
 /* Apply endpoints */
 module.exports = app => app
     .use('/', site)
     .use('/cab', cab)
+    .use('/auth', auth)
     .use(NotFoundMiddleware)
     .use(errorHandler)
 
