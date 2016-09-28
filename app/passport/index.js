@@ -1,15 +1,21 @@
 const passport = require('passport');
 const Auth0Strategy = require('./auth0strategy');
+//const db = require('app/db');
+//const User = db.model('User');
 
 /*
     SETUP PASSPORT
 */
 
-passport.serializeUser((id, done) => {
-    done(null, id);
+passport.serializeUser((user, done) => {
+    done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
-    done(null, id);
+    User.load({
+        criteria: {
+            _id: id
+        }
+    }, done)
 });
 
 Auth0Strategy(passport);

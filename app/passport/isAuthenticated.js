@@ -1,7 +1,7 @@
-module.exports = function isAuth(req, res, next) {
+module.exports = function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     } else {
-        throw new AuthError;
+        throw new Error('auth failed');
     }
 }

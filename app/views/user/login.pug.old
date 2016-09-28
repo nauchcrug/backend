@@ -1,54 +1,44 @@
+// TODO: Layout
 html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title Науч.Круг - личный кабинет
-    // Tell the browser to be responsive to screen width
+    title Науч.Круг
     meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
-    // Bootstrap 3.3.6
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    // Font Awesome
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-    // Ionicons
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
-    link(rel='stylesheet', href='/cab/static/dist/css/AdminLTE.min.css')
-    link(rel='stylesheet', href='/cab/static/dist/css/skins/skin-green.min.css')
-    //link(rel='stylesheet', href='/cab/static/plugins/datatables/dataTables.bootstrap.css')
-    link(rel='stylesheet', href='/cab/static/plugins/pace/pace.min.css')
-    // Custom styles
-    link(rel='stylesheet', href='/cab/styles.css')
-    style: :clean-css
-      body{
-        background: rgb(243, 243, 243);
-      }
-      .login-box {
-        box-shadow: 0 0 10px rgba(0,0,0,.5);
-      }
+    link(rel='stylesheet', href='/login.css')
   body
     .login-box
-      // /.login-logo
-      .login-box-body
-        .login-logo
-          img(src='application/logo-min.png')
-        p.login-box-msg Авторизация
-        center
-          form(name='send', method='post')
-            .form-group.has-feedback
-              input.form-control(type='text', name='login', placeholder='Логин или Email', required='')
-              span.glyphicon.glyphicon-envelope.form-control-feedback
-            .form-group.has-feedback
-              input.form-control(type='password', name='password', placeholder='Пароль', required='')
-              span.glyphicon.glyphicon-lock.form-control-feedback
-            // /.col
-            button.btn.btn-primary.btn-block.btn-flat(type='submit', name='authme') Войти
-            // /.col
-          // /.social-auth-links
-          h4 Не зарегистрированы?
-          a.text-center(href='register.php') Зарегистрироваться
-      // /.login-box-body
-    // /.login-box
-    // jQuery 2.2.3
-    script(src='application/plugins/jQuery/jquery-2.2.3.min.js')
-    // Bootstrap 3.3.6
-    script(src='application/bootstrap/js/bootstrap.min.js')
+      .logo: img(src='/images/logo-min.png')
+      form(name='login', method='post').form-wrap#form
+        span.form-title Авторизация
+        .form-group
+          span Msg
+          input.form-control(type='text', name='login', placeholder='Логин или e-mail', required)
+        .form-group
+          span Msg
+          input.form-control(type="password", name="password", placeholder="Пароль", required)
+        button(type="submit", name="authme")#form-submit Войти
+        h4 Не зарегистрированы?
+        a#register(href="/register") Зарегистрироваться
 
+    script.
+      const formData = new FormData(document.forms['#login']);
+      const submit = document.querySelector('#form-submit');
+      submit.addEventListner('click', ev => {
+        ev.preventDefault();
+        const headers = new Headers();
+        fetch('/login', {
+          headers,
+          method: 'POST'
+        })
+          .then(res => res.ok
+            ? res.json()
+            : Promise.reject(new Error('An error occured'))
+          })
+          .then(data => {
+            console.log(data);
+          })
+          .catch(err => {
+            console.error(err);
+          })
+      });

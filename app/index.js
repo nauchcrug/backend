@@ -11,7 +11,7 @@ const redirects = require('app/routes/redirects');
 const passport = require('app/passport');
 const routes = require('app/routes');
 const apiRoutes = require('app/api');
-const userRoutes = require('app/routes/user');
+const authRoutes = require('app/routes/auth');
 
 const app = express();
 app.set('views', 'app/views');
@@ -67,7 +67,7 @@ app
     }))
 
 app.use('/api', apiRoutes); /* API */
-userRoutes(app);
+authRoutes(app);
 routes(app); /* App routes */
 
 module.exports = app;

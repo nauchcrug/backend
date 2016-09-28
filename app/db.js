@@ -1,18 +1,16 @@
-const pgp = require('pg-promise')({
-/* pg-promise options */
-});
+const config = require('app/config');
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise;
+connect()
 
-/* Attach request monitor on development */
 if (__DEV__ && !__TEST__) {
-    const monitor = require('pg-monitor');
-    monitor.attach({
-        /* pg-monitor options */
-    });
+    mongoose.set('debug', true);
 }
 
+module.exports = mongoose;
 
-let url = process.env.DATABASE_URL + '?ssl=true';
-const db = pgp(url);
-/* pgp instance: db.$config.pgp */
-
-module.exports = db;
+function connect() {
+    return mongoose.connect(
+        process.env.MONGODB_URI || config['mongodb_uri']
+    );
+}

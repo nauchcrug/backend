@@ -1,44 +1,29 @@
-// TODO: Layout
 html
   head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title Науч.Круг
-    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
-    link(rel='stylesheet', href='/login.css')
+    title Login
   body
-    .login-box
-      .logo: img(src='/images/logo-min.png')
-      form(name='login', method='post').form-wrap#form
-        span.form-title Авторизация
-        .form-group
-          span Msg
-          input.form-control(type='text', name='login', placeholder='Логин или e-mail', required)
-        .form-group
-          span Msg
-          input.form-control(type="password", name="password", placeholder="Пароль", required)
-        button(type="submit", name="authme")#form-submit Войти
-        h4 Не зарегистрированы?
-        a#register(href="/register") Зарегистрироваться
-
+    div#root
+    style.
+      #root {
+        width: 280px;
+        margin: 40px auto;
+        padding: 10px;
+      }
+    script(async, src="//cdn.auth0.com/js/lock/10.3/lock.min.js", onload="onLoaded()")
     script.
-      const formData = new FormData(document.forms['#login']);
-      const submit = document.querySelector('#form-submit');
-      submit.addEventListner('click', ev => {
-        ev.preventDefault();
-        const headers = new Headers();
-        fetch('/login', {
-          headers,
-          method: 'POST'
-        })
-          .then(res => res.ok
-            ? res.json()
-            : Promise.reject(new Error('An error occured'))
-          })
-          .then(data => {
-            console.log(data);
-          })
-          .catch(err => {
-            console.error(err);
-          })
-      });
+      window.onLoaded = () => {
+      let lock = new Auth0Lock(
+        '#{process.env.AUTH0_CLIENT_ID}',
+        '#{process.env.AUTH0_DOMAIN}',
+        {
+          auth: {
+            redirectUrl: '#{process.env.AUTH0_CALLBACK_URL}',
+            responseType: 'code',
+            params: {
+              scope: 'openid name email picture'
+            }
+          }
+        }
+      );
+      lock.show();
+      }
