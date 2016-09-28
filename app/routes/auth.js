@@ -27,6 +27,7 @@ function getCallback(req, res) {
         failureFlash: false
     })(req, res, (req, res) => {
         res.redirect(req.session.returnTo || '/');
+        //res.redirect('/');
     });
 }
 

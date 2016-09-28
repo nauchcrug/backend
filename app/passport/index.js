@@ -11,11 +11,12 @@ passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
-    User.load({
+    /*User.load({
         criteria: {
             _id: id
         }
-    }, done)
+    }, done)*/
+    done(null, id);
 });
 
 Auth0Strategy(passport);
