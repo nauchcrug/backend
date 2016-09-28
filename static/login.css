@@ -1,0 +1,58 @@
+/* FLEXBOX */
+.container {
+    display: flex;
+}
+
+.item {
+}
+
+body {
+    background: rgb(243, 243, 243);
+}
+
+.login-box {
+    width: 70%;
+    margin: 30% auto 50% auto;
+    background: lightgreen;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.logo {
+    height: 50px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-title {
+    font-size: 24pt;
+    /*width: 30px;*/
+}
+
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-wrap button {
+    width: 60px;
+    margin: 0 auto;
+    font-size: 16pt;
+}
+
+.form-group {
+    background: lightblue;
+    width: 150px;
+    height: 40px;
+    /*margin: 0 auto;*/
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.form-group input {
+    flex-grow: 2;
+}
+
+.form-group

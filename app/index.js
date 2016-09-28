@@ -10,7 +10,8 @@ const RedisStore = require('connect-redis')(session);
 const redirects = require('app/routes/redirects');
 const passport = require('app/passport');
 const routes = require('app/routes');
-const api = require('app/api');
+const apiRoutes = require('app/api');
+const userRoutes = require('app/routes/user');
 
 const app = express();
 app.set('views', 'app/views');
@@ -32,7 +33,7 @@ if (__DEV__) {
     }
 } else {
     /*app.disable('x-powered-by');*/
-    app.set('view cache');
+    app.enable('view cache');
 
     /* Redirect to https */
     if (process.env.HTTPS != 0) app.use((req, res, next) => {
@@ -65,8 +66,8 @@ app
         maxAge: '365d'
     }))
 
-app.use('/api', api); /* API */
+app.use('/api', apiRoutes); /* API */
+userRoutes(app);
 routes(app); /* App routes */
 
 module.exports = app;
-

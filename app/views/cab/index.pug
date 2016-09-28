@@ -3,4 +3,15 @@ block content
   section.content-header
     h1 Главная страница
   section.content
-    h3 05.08.2016 было обновление. Сейчас Максим занят изучением фреймворка node.JS, поэтому ждём-с)
+    a(href="#")#lol: h3 Click me! :-)
+
+block script
+  script.
+    window.addEventListener('DOMContentLoaded', ev => {
+      document.querySelector('#lol').addEventListener('click', ev => {
+        ev.preventDefault();
+        alert('TODO: Easter egg');
+        window.location.href = '/cab';
+        /* TODO: Easter egg */
+      });
+    });

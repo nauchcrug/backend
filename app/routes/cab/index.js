@@ -1,7 +1,8 @@
 const {Router} = require('express');
 const serve = require('serve-static');
-
-const user = require('./user');
+//const task = require('app/routes/cab/task');
+//const subject = require('app/routes/cab/subject');
+//const user = require('app/routes/cab/user');
 
 module.exports = router = new Router;
 
@@ -16,10 +17,12 @@ router.use('/static',
 
 router
     .get('/', (req, res) => res.render('cab/index'))
-    .get('/add', (req, res) => res.render('cab/add'))
-    .get('/table', (req, res) => res.render('cab/table'))
-    .get('/control', (req, res) => res.render('cab/controlteam'))
-    .get('/addpage', (req, res) => res.render('cab/addpage'))
-    .get('/addnews', (req, res) => res.render('cab/addnews'))
     .get('/bank', (req, res) => res.render('cab/bank'))
-    .use('/user', user);
+    .get('/table', (req, res) => res.render('cab/table'))
+    .get('/team', (req, res) => res.render('cab/team'))
+    .get('/stats', (req, res) => res.render('cab/stats'))
+    /* TODO: Some CRUD
+    .use('/task', task)
+    .use('/subject', subject)
+    .use('/user', user)
+    */
