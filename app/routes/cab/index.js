@@ -1,9 +1,5 @@
 const {Router} = require('express');
 const serve = require('serve-static');
-//const task = require('app/routes/cab/task');
-//const subject = require('app/routes/cab/subject');
-//const user = require('app/routes/cab/user');
-
 module.exports = router = new Router;
 
 router.use('/static',
